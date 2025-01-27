@@ -17,7 +17,7 @@ body {
 }
 
 #auth #auth-left .auth-title {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1rem
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 #auth #auth-left .auth-logo {
-  margin-bottom: 7rem
+  margin-bottom: 3rem
 }
 
 #auth #auth-left .auth-logo img {
