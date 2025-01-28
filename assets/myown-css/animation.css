@@ -3,23 +3,14 @@
   overflow-x: scroll;
   height: 71vh;
 }
-
+/* 
 #example thead th {
   background-color: #343a40;
   color: white;
   font-size: 12px;
   vertical-align: middle;
   text-align: center;
-}
-
-.fs-6 {
-  padding: 0;
-  margin: 0;
-}
-
-.d-vh {
-  height: 29vh;
-}
+} */
 
 .loading-overlay {
   position: absolute;
@@ -76,12 +67,12 @@
   }
 
   .fs-7 {
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px;
   }
 
   .fs-relative {
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .m-y-0 {
@@ -94,7 +85,7 @@
     padding-bottom: 18px;
   }
 
-  #example thead th {
+  /* #example thead th {
     background-color: #343a40;
     color: white;
     font-size: 11px;
@@ -107,7 +98,7 @@
     vertical-align: middle;
     padding-top: 2px;
     padding-bottom: 2px;
-  }
+  } */
 
   .img-size {
     width: 50px;
@@ -133,14 +124,14 @@
     width: 75px;
     height: auto;
   }
-
+/* 
   #example thead th {
     background-color: #343a40;
     color: white;
     font-size: 13px;
     vertical-align: middle;
     text-align: center;
-  }
+  } */
 
 }
 
@@ -152,18 +143,13 @@
   .d-vh {
     height: 30vh;
   }
-
-  .img-size {
-    width: 75px;
-    height: auto;
-  }
-
+  
   .m-y-0 {
     margin-top: 9px;
     margin-bottom: 9px;
   }
 
-  #example thead th {
+  /* #example thead th {
     background-color: #343a40;
     color: white;
     font-size: 14px;
@@ -171,7 +157,7 @@
     text-align: center;
     padding-top: 2px;
     padding-bottom: 2px;
-  }
+  } */
 }
 
 @media (min-width: 1200px) {
@@ -183,23 +169,9 @@
     height: 30vh;
   }
 
-  .img-size {
-    width: 50px;
-    height: auto;
-  }
-
   .m-y-0 {
     margin-top: 6px;
     margin-bottom: 6px;
-  }
-
-  .fs-7 {
-    font-size: 12px;
-    padding: 5px;
-  }
-
-  .fs-relative {
-    font-size: 18px;
   }
 
   #imgFluid {
@@ -207,7 +179,7 @@
     max-height: 100px;
   }
 
-  #example thead th {
+  /* #example thead th {
     background-color: #343a40;
     color: white;
     font-size: 10px;
@@ -222,5 +194,5 @@
     vertical-align: middle;
     padding-top: 2px;
     padding-bottom: 2px;
-  }
+  } */
 }
