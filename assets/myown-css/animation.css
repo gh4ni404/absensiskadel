@@ -131,7 +131,8 @@
   }
 
   .fs-relative {
-    f
+    font-size: 12px;
+  }
 /* 
   #example thead th {
     background-color: #343a40;
