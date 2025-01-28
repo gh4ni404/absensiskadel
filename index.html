@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Absensi Skadel Bone</title>
 
-  
+  <link rel="stylesheet" href="/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="/assets/compiled/css/table-datatable-jquery.css">
   <link rel="stylesheet" href="/assets/css-foi/style.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css" />
@@ -34,7 +35,7 @@
               <i class="fas fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesMenu">
-              <a href="" class="dropdown-item">Guru</a>
+              <a href="#guru" class="dropdown-item">Guru</a>
               <a href="" class="dropdown-item">Siswa</a>
             </div>
           </li>
@@ -76,54 +77,56 @@
     </div>
   </header>
 
-  <section class="py-5 mb-5">
-    <div class="container">
-      <h2 class="section-title">Application Features</h2>
-      <div class="container-fluid bg-warning-subtle d-vh">
+  <section class="py-5 mb-5" id="guru">
+    <div class="container-fluid">
+      <div>
         <!-- Judul di sini -->
-        <div class="d-flex py-relative justify-content-evenly align-items-center">
-          <div class="p-1">
+        <div class="row justify-content-center">
+          <div class="col-lg-auto col-md-auto col-sm-auto">
             <img src="LOGO PROVINSI.png" alt="logo provinsi" class="img-fluid img-size" width="100">
           </div>
-          <div class="p-1">
-            <h3 class="text-center fw-bold fs-relative mb-0 pb-0">LAPORAN KBM HARIAN SMKN 8 BONE</h3>
-            <h4 class="text-center fs-relative pt-0 mb-0" id="date"></h4>
+          <div class="col-lg-6 col-md-6 col-sm-6 text-center">
+            <div class="col-auto d-flex justify-content-center">
+              <h3 class="section-title">LAPORAN KBM HARIAN SMKN 8 BONE</h3>
+            </div>
+            <div class="col-auto d-flex justify-content-center">
+              <h4 id="date"></h4>
+            </div>
           </div>
-          <div class="p-1">
+          <div class="col-lg-auto col-md-auto col-sm-auto">
             <img src="LOGO SEKOLAH.png" alt="logo SEKOLAH" class="img-fluid img-size" width="100">
           </div>
         </div>
         <!-- judul end -->
-    
+        
         <!-- Navbar -->
-        <div>
-          <ul id=" myTab" role="tablist" class="nav nav-tabs justify-content-center bg-primary-subtle">
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('SENIN')" class="nav-link fs-7 active"
-                data-bs-toggle="tab">SENIN</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('SELASA')" class="nav-link fs-7" data-bs-toggle="tab">SELASA</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('RABU')" class="nav-link fs-7" data-bs-toggle="tab">RABU</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('KAMIS')" class="nav-link fs-7" data-bs-toggle="tab">KAMIS</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('JUMAT')" class="nav-link fs-7" data-bs-toggle="tab">JUMAT</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a href="#" role="tab" onclick="fetchData('SABTU')" class="nav-link fs-7" data-bs-toggle="tab">SABTU</a>
-            </li>
-          </ul>
-        </div>
+        <ul class="nav justify-content-center">
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('SENIN')" class="nav-link active"
+              data-bs-toggle="tab">SENIN</a>
+          </li>
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('SELASA')" class="nav-link fs-7"
+              data-bs-toggle="tab">SELASA</a>
+          </li>
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('RABU')" class="nav-link fs-7" data-bs-toggle="tab">RABU</a>
+          </li>
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('KAMIS')" class="nav-link fs-7" data-bs-toggle="tab">KAMIS</a>
+          </li>
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('JUMAT')" class="nav-link fs-7" data-bs-toggle="tab">JUMAT</a>
+          </li>
+          <li>
+            <a href="#guru" role="tab" onclick="fetchData('SABTU')" class="nav-link fs-7" data-bs-toggle="tab">SABTU</a>
+          </li>
+        </ul>
         <!-- Navbar End -->
-    
+
         <!-- Tombol Print dan search disini -->
-        <div class="d-flex my-1 justify-content-between align-items-center flex-md-nowrap bg-body-tertiary position-static">
-          <div class="me-auto">
+        <div class="row">
+          <div class="mr-auto">
             <div class="form-floating form-control-sm py-1 ms-1 ms-md-2 ms-lg-2 m-s-0">
               <input type="text" class="form-control form-control-sm" style="height: 45px;" id="floatingInput"
                 placeholder="Cari Data Guru">
@@ -152,7 +155,7 @@
         </div>
         <!-- Tombol Print dan search end -->
       </div>
-    
+
       <!-- Table disini -->
       <div class="table-container position-relative ">
         <div class="loading-overlay d-none">
@@ -165,7 +168,7 @@
         </div>
       </div>
       <!-- Table End -->
-    
+
       <!-- Loading Spinner Disini-->
       <div id="loading"
         class="text-center position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light"
@@ -183,6 +186,11 @@
   <script src="/assets/css-agency/js/scripts.js"></script>
   <script src="/assets/extensions/jquery/jquery.min.js"></script>
   <script src="/assets/extensions/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+  <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="assets/static/js/pages/datatables.js"></script>
 </body>
 
 </html>
