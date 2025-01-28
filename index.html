@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Absensi Skadel Bone</title>
 
+  <link rel="stylesheet" href="/assets/myown-css/animation.css">
   <link rel="stylesheet" href="/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="/assets/compiled/css/table-datatable-jquery.css">
   <link rel="stylesheet" href="/assets/css-foi/style.css">
@@ -77,20 +78,20 @@
     </div>
   </header>
 
-  <section class="py-5 mb-5" id="guru">
+  <section class="mb-5" id="guru">
     <div class="container-fluid">
-      <div>
+      
         <!-- Judul di sini -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center bg-primary">
           <div class="col-lg-auto col-md-auto col-sm-auto">
             <img src="LOGO PROVINSI.png" alt="logo provinsi" class="img-fluid img-size" width="100">
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 text-center">
+          <div class="col-lg-6 col-md-6 col-sm-6 text-center mt-3">
             <div class="col-auto d-flex justify-content-center">
-              <h3 class="section-title">LAPORAN KBM HARIAN SMKN 8 BONE</h3>
+              <h3 class="foi-navbar bg-primary">LAPORAN KBM HARIAN SMKN 8 BONE</h3>
             </div>
             <div class="col-auto d-flex justify-content-center">
-              <h4 id="date"></h4>
+              <h4 class="foi-navbar" id="date"></h4>
             </div>
           </div>
           <div class="col-lg-auto col-md-auto col-sm-auto">
@@ -98,30 +99,32 @@
           </div>
         </div>
         <!-- judul end -->
-        
+
         <!-- Navbar -->
-        <ul class="nav justify-content-center">
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('SENIN')" class="nav-link active"
-              data-bs-toggle="tab">SENIN</a>
-          </li>
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('SELASA')" class="nav-link fs-7"
-              data-bs-toggle="tab">SELASA</a>
-          </li>
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('RABU')" class="nav-link fs-7" data-bs-toggle="tab">RABU</a>
-          </li>
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('KAMIS')" class="nav-link fs-7" data-bs-toggle="tab">KAMIS</a>
-          </li>
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('JUMAT')" class="nav-link fs-7" data-bs-toggle="tab">JUMAT</a>
-          </li>
-          <li>
-            <a href="#guru" role="tab" onclick="fetchData('SABTU')" class="nav-link fs-7" data-bs-toggle="tab">SABTU</a>
-          </li>
-        </ul>
+        <div class="container-fluid" style="background-color: #9150c2;">
+          <ul class="nav nav-tabs justify-content-center" >
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('SENIN')" class="nav-link fs-7 active"
+                data-bs-toggle="tab">SENIN</a>
+            </li>
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('SELASA')" class="nav-link fs-7"
+                data-bs-toggle="tab">SELASA</a>
+            </li>
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('RABU')" class="nav-link fs-7" data-bs-toggle="tab">RABU</a>
+            </li>
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('KAMIS')" class="nav-link fs-7" data-bs-toggle="tab">KAMIS</a>
+            </li>
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('JUMAT')" class="nav-link fs-7" data-bs-toggle="tab">JUMAT</a>
+            </li>
+            <li>
+              <a href="#guru" role="tab" onclick="fetchData('SABTU')" class="nav-link fs-7" data-bs-toggle="tab">SABTU</a>
+            </li>
+          </ul>
+        </div>
         <!-- Navbar End -->
 
         <!-- Tombol Print dan search disini -->
@@ -154,7 +157,7 @@
           </div>
         </div>
         <!-- Tombol Print dan search end -->
-      </div>
+      
 
       <!-- Table disini -->
       <div class="table-container position-relative ">
