@@ -221,7 +221,8 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; }
+  -webkit-appearance: button;
+  appearance: button; }
 
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -245,7 +246,8 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  -webkit-appearance: listbox; }
+  -webkit-appearance: listbox;
+  appearance: listbox; }
 
 textarea {
   overflow: auto;
@@ -277,7 +279,8 @@ progress {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  appearance: none; }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -8307,7 +8310,7 @@ button:focus {
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
-  color: #000000; }
+  color: #fff; }
   .foi-navbar .navbar-nav .nav-link:hover, .foi-navbar .navbar-nav .nav-link:focus {
     color: rgba(0, 0, 0, 0.8); }
 
@@ -8397,7 +8400,7 @@ html {
   width: 35px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+    object-fit: cover;
   margin-right: 10px; }
 
 .foi-review .foi-review-user p {
@@ -8448,7 +8451,7 @@ html {
     height: 108px;
     border-radius: 50%;
     -o-object-fit: cover;
-       object-fit: cover;
+      object-fit: cover;
     margin-bottom: 24px; }
   .team-member-card .team-member-name {
     margin-bottom: 0;
@@ -8748,3 +8751,72 @@ html {
   color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */
+
+#mainNav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #6206a8;
+}
+
+#mainNav .navbar-toggler {
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+#mainNav .navbar-brand {
+  color: #6f42c1;
+  font-weight: 700;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+}
+
+#mainNav .navbar-brand img {
+  height: 1.5rem;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-size: 0.95rem;
+  color: #000;
+  letter-spacing: 0.0625em;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+  color: #6f42c1;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border: none;
+    background-color: transparent;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand {
+    font-size: 1.5em;
+    transition: font-size 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand img {
+    height: 2rem;
+    transition: height 0.3s ease-in-out;
+  }
+  #mainNav.navbar-shrink {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #6206a8;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+  }
+  #mainNav.navbar-shrink .navbar-brand svg,
+  #mainNav.navbar-shrink .navbar-brand img {
+    height: 1.5rem;
+  }
+  #mainNav .navbar-nav .nav-item {
+    margin-right: 1rem;
+  }
+  #mainNav .navbar-nav .nav-item:last-child {
+    margin-right: 0;
+  }
+}

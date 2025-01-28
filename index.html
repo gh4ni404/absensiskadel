@@ -12,47 +12,47 @@
     href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css" />
 </head>
 
-<body>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark foi-navbar fixed-top" id="mainNav">
+    <div class="container">
+      <a href="#page-top" class="navbar-brand"><img src="/ABSENSI - SKADEL.svg" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a href="#page-top" class="nav-link">Beranda <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" id="pagesMenu" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <span>Kehadiran</span>
+              <i class="fas fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesMenu">
+              <a href="" class="dropdown-item">Guru</a>
+              <a href="" class="dropdown-item">Siswa</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Tentang</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mt-2 mt-lg-0">
+          <li class="nav-item mr-2 mb-3 mb-lg-0">
+            <a href="/authen/login.html" class="btn btn-secondary p-2"><i class="fas fa-sign-in-alt"></i>
+              <span>Login</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <header class="foi-header landing-header">
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light foi-navbar">
-        <a href="/index.html" class="navbar-brand">
-          <img src="/ABSENSI - SKADEL.svg" alt="logo" style="height: auto; width: 150px;">
-        </a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a href="/index.html" class="nav-link">Beranda <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" id="pagesMenu" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span>Kehadiran</span>
-                <i class="fas fa-angle-down"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="pagesMenu">
-                <a href="" class="dropdown-item">Guru</a>
-                <a href="" class="dropdown-item">Siswa</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Tentang</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav mt-2 mt-lg-0">
-            <li class="nav-item mr-2 mb-3 mb-lg-0">
-              <a href="/authen/login.html" class="btn btn-secondary">
-                <i class="fas fa-sign-in-alt"></i>
-                <span>Login</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
       <div class="header-content">
         <div class="row">
           <div class="col-md-6">
@@ -67,13 +67,115 @@
             </div>
           </div>
           <div class="col-md-6">
-            <img src="/assets/images/LOGO SEKOLAH.png" alt="sekolah" width="480px" class="img-fluid">
+            <img src="/assets/images/LOGO SEKOLAH.png" alt="sekolah" style="width: 500px; height: 520px;" class="img-fluid">
           </div>
         </div>
       </div>
     </div>
   </header>
 
+  <section class="py-5 mb-5">
+    <div class="container">
+      <h2 class="section-title">Application Features</h2>
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5>Secure Data</h5>
+          <p class="text-dark">No matter what kind of home you have to share, you can increase your earnings.</p>
+          <p class="mb-5"><a href="#!" class="text-primary mb-5">Find out More</a></p>
+          <h5>Fully functional</h5>
+          <p class="text-dark">No matter what kind of home you have to share, you can increase your earnings.</p>
+          <p class="mb-5"><a href="#!" class="text-primary mb-5">Find out More</a></p>
+        </div>
+        <div class="col-lg-4 mb-3 mb-lg-0">
+          <h5>Live Chat</h5>
+          <p class="text-dark">No matter what kind of home you have to share, you can increase your earnings.</p>
+          <p class="mb-5"><a href="#!" class="text-primary mb-5">Find out More</a></p>
+          <h5>Powerful dashboard</h5>
+          <p class="text-dark">No matter what kind of home you have to share, you can increase your earnings.</p>
+          <p class="mb-5"><a href="#!" class="text-primary mb-5">Find out More</a></p>
+        </div>
+        <!-- <div class="col-lg-4">
+          <h6 class="text-gray font-os font-weight-semibold">Trusted by the world's best</h6>
+          <div id="landingClientCarousel" class="carousel slide landing-client-carousel" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="d-flex flex-wrap justify-content-center">
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/slack.svg" alt="Slack" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/spotify.svg" alt="Spotify" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/paypal.svg" alt="Paypal" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/amazon.svg" alt="Amazon" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/google.svg" alt="Google" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/samsung.svg" alt="Samsung" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex flex-wrap justify-content-center">
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/slack.svg" alt="Slack" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/spotify.svg" alt="Spotify" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/paypal.svg" alt="Paypal" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/amazon.svg" alt="Amazon" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/google.svg" alt="Google" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/samsung.svg" alt="Samsung" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex flex-wrap justify-content-center">
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/slack.svg" alt="Slack" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/spotify.svg" alt="Spotify" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/paypal.svg" alt="Paypal" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/amazon.svg" alt="Amazon" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/google.svg" alt="Google" class="img-fluid">
+                  </div>
+                  <div class="clients-logo">
+                    <img src="assets/images/clients/samsung.svg" alt="Samsung" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ol class="carousel-indicators">
+              <li data-target="#landingClientCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#landingClientCarousel" data-slide-to="1"></li>
+              <li data-target="#landingClientCarousel" data-slide-to="2"></li>
+            </ol>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <script src="/assets/css-agency/js/scripts.js"></script>
   <script src="/assets/extensions/jquery/jquery.min.js"></script>
   <script src="/assets/extensions/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
