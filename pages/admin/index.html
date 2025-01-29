@@ -14,13 +14,17 @@
     href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css" />
 </head>
 
+
 <body>
   <script src="/assets/static/js/initTheme.js"></script>
+  <script src="/assets/myown-js/loadComponents.js"></script>
 
   <!-- Content here -->
   <div id="app">
-    <!-- Part of Sidebar is here -->
     
+    <!-- Part of Sidebar is here -->
+    <div id="sidebar-container"></div>
+    <!-- Part of Sidebar is end -->
 
     <!-- Part of isi utama halaman is here -->
     <div id="main">
@@ -35,22 +39,14 @@
       <h1>Hai ini adalah halaman Admin</h1>
 
       <!-- Trying to bring login page -->
-      <a href="../authen/login.html" class="">Login here</a>
-      <footer>
-        <div class="footer clearfix mb-0 text-muted">
-          <div class="float-start">
-            <p>2023 &copy; Mazer - 2025 @ Mohd. Abdul Ghani</p>
-          </div>
-          <div class="float-end">
-            <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i>
-            </span>by <a href="https://saugi.me">Saugi</a> and modified by Mohd. Abdul Ghani</p>
-          </div>
-        </div>
-      </footer>
+      <a href="/authen/login.html" class="">Login here</a>
+
+      <div id="footer"></div>
     </div>
     <!-- Part of isi utama halaman is end -->
   </div>
   <!-- content end -->
+
   <script src="/assets/static/js/components/dark.js"></script>
   <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
