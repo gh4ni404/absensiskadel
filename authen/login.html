@@ -27,15 +27,15 @@
           <h1 class="auth-title">Log in</h1>
           <p class="auth-subtitle mb-3">Silahkan login menggunakan data yang diberikan oleh admin</p>
 
-          <form>
+          <form onsubmit="login(event)">
             <div class="form-group position-relative has-icon-left mb-3">
-              <input type="email" class="form-control form-control-xl" placeholder="Email">
+              <input id="username" type="text" class="form-control form-control-xl" placeholder="Username">
               <div class="form-control-icon">
                 <i class="bi bi-person-fill"></i>
               </div>
             </div>
             <div class="form-group position-relative has-icon-left mb-3">
-              <input type="password" class="form-control form-control-xl" placeholder="Password">
+              <input id="password" type="password" class="form-control form-control-xl" placeholder="Password">
               <div class="form-control-icon">
                 <i class="bi bi-shield-lock-fill"></i>
               </div>
@@ -44,7 +44,7 @@
               <input type="checkbox" class="form-check-input me-2" value="" id="flexCheckDefault">
               <label for="flexCheckDefault" class="form-check-label text-gray-600">Tetap Login</label>
             </div>
-            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-3">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-3">Log in</button>
           </form>
         </div>
       </div>
@@ -54,6 +54,7 @@
       </div>
     </div>
   </div>
+
 </body>
 
 </html>
