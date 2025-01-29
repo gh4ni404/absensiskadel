@@ -25,5 +25,5 @@ function reinitializeMazer() {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadComponent("sidebar-container", "/components/sidebar.html");
-  loadComponent("footer", "/components/footer.html")
+  // loadComponent("footer", "/components/footer.html")
 });
