@@ -1,17 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
+  document.body.style.display = 'none';
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const userRole = localStorage.getItem('userRole');
 
   if (isLoggedIn !== 'true') {
+    document.body.style.display = 'none';
     window.location.href = "/authen/error-403.html";
-    // alert('Anda belum login. Silahkan login terlebih dahulu.')
-  } else if (userRole !== 'admin') {
+  } else if (userRole === 'admin' && window.location.pathname.includes('/pages/guru/index.html')) {
+    document.body.style.display = 'none';
     window.location.href = "/authen/error-403.html";
-    // alert('Anda tidak memiliki akses ke halaman admin. Silahkan login sebagai admin!');
-  } else if (window.location.pathname.includes('/pages/guru/index.html') && userRole !== 'guru') {
+  } else if (userRole === 'guru' && window.location.pathname.includes('/pages/admin/index.html')) {
+    document.body.style.display = 'none';
     window.location.href = "/authen/error-403.html";
-    // alert('Anda tidak memiliki akses ke halaman guru. Silahkan login sebagai guru!');
+  } else {
+    document.body.style.display = 'block';
+    // document.body.style.display = 'block';
   }
+
 });
 
 function logout() {

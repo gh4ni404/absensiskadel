@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     alert('Anda sudah login sebagai ' + userRole + '. Silahkan logout terlebih dahulu.');
     if (userRole === 'admin') {
       window.location.href = '/pages/admin/index.html';
-    } else if (result.role === 'guru') {
+    } 
+    if (userRole === 'guru') {
       window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
     }
   }
