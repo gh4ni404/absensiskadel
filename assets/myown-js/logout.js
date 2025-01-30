@@ -4,15 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (isLoggedIn !== 'true') {
     window.location.href = "/authen/error-403.html";
-    alert('Anda belum login. Silahkan login terlebih dahulu.')
-  }
-  if (userRole !== 'admin') {
+    // alert('Anda belum login. Silahkan login terlebih dahulu.')
+  } else if (userRole !== 'admin') {
     window.location.href = "/authen/error-403.html";
-    alert('Anda tidak memiliki akses ke halaman admin. Silahkan login sebagai admin!');
-  }
-  if (window.location.pathname.includes('/pages/guru/index.html') && userRole !== 'guru') {
+    // alert('Anda tidak memiliki akses ke halaman admin. Silahkan login sebagai admin!');
+  } else if (window.location.pathname.includes('/pages/guru/index.html') && userRole !== 'guru') {
     window.location.href = "/authen/error-403.html";
-    alert('Anda tidak memiliki akses ke halaman guru. Silahkan login sebagai guru!');
+    // alert('Anda tidak memiliki akses ke halaman guru. Silahkan login sebagai guru!');
   }
 });
 
