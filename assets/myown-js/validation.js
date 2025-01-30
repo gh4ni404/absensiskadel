@@ -1,27 +1,49 @@
-function login(event) {
+document.addEventListener('DOMContentLoaded', function () {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const userRole = localStorage.getItem('userRole');
+
+  if (isLoggedIn === 'true') {
+    alert('Anda sudah login sebagai ' + userRole + '. Silahkan logout terlebih dahulu.');
+    if (userRole === 'admin') {
+      window.location.href = '/pages/admin/index.html';
+    } else if (result.role === 'guru') {
+      window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
+    }
+  }
+});
+
+async function login(event) {
   event.preventDefault();
 
-  var username=document.getElementById("username").value;
-  var password=document.getElementById("password").value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-  fetch("https://script.google.com/macros/s/AKfycbxsQxYgl6fZjlw3EdOqPZHqKS8gT0NQQnpLPhmHd8uUwr2CPRz9AqNp7q0EIZ99zedJ/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      username: username,
-      password: password
-    }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status==="success"){
-      alert("Login berhasil! Role: "+ data.role);
-      window.location.href = "/pages/"+data.role+"/index.html";
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec'; // Ganti dengan URL Web App Anda
+
+  try {
+    const response = await fetch(webAppUrl, {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      alert('Login berhasil! Selamat Datang ' + result.role);
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userRole', result.role);
+
+      if (result.role === 'admin') {
+        window.location.href = '/pages/admin/index.html'; // Redirect ke halaman admin
+      } else if (result.role === 'guru') {
+        window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
+      }
     } else {
-      alert("Login Gagal: "+data.message);
+      alert(result.message || 'Username atau password salah.');
     }
-  })
-  .catch(error=> console.error("Error:", error));
+
+    console.log(result); // Lihat respons di console browser
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
