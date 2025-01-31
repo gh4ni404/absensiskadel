@@ -9,7 +9,8 @@
 
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app-dark.css">
-  <link rel="stylesheet" crossorigin href="/assets/compiled/css/iconly.css">
+  <link rel="stylesheet" crossorigin href="/assets/compiled/css/table-datatable-jquery.css">
+  <link rel="stylesheet" href="/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
 
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css" />
@@ -84,7 +85,7 @@
           <ul class="menu">
             <!-- Part of Dashboard and Data Master is here -->
             <li class="sidebar-title">Menu</li>
-            <li class="sidebar-item active">
+            <li class="sidebar-item">
               <a href="/pages/admin/index.html" class="sidebar-link">
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
@@ -120,7 +121,7 @@
                 </li>
               </ul>
             </li>
-            <li class="sidebar-item has-sub">
+            <li class="sidebar-item has-sub active">
               <a href="#" class="sidebar-link">
                 <i class="bi bi-collection-fill"></i>
                 <span>Manajemen User</span>
@@ -132,7 +133,7 @@
                     <span>Data Admin</span>
                   </a>
                 </li>
-                <li class="submenu-item">
+                <li class="submenu-item active">
                   <a href="/pages/admin/user-management.html" class="submenu-link">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Data Guru</span>
@@ -180,129 +181,10 @@
       <!-- Part of tombol open/close sidebar is end -->
 
       <div class="page-heading">
-        <h3>Dashboard</h3>
+        <h3>Manajeme Data Guru</h3>
       </div>
       <div class="page-content">
-        <section class="row">
-          <div class="col-12 col-lg-9">
-            <!-- Row Card Is Here -->
-            <div class="row">
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon purple mb-2">
-                          <i class="iconly-boldUser1"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_siswa"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon blue mb-2">
-                          <i class="iconly-boldProfile"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Guru</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_guru"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon green mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Absensi Bulan Ini</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapAbsensiPerBulan"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon red mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Persen Kehadiran Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapPersen"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-            </div>
-            <!-- Row Card is end -->
-
-            <!-- Chart for rekap absensi is here, plan visualize Hadir, Sakit, Izin, Alpa perkelas -->
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Rekap Status kehadiran Siswa</h4>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-profile-visit"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Chart for rekap absensi is end -->
-
-            <!-- Show Profile is here -->
-          </div>
-          <div class="col-12 col-lg-3">
-            <div class="card">
-              <div class="card-body py-4 px-4">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl">
-                    <img src="/assets/images/LOGO SEKOLAH.png" alt="">
-                  </div>
-                  <div class="ms-3 name">
-                    <h5 class="font-bold" id="namaGuru"></h5>
-                    <h6 class="text-muted mb-0" id="userGuru"></h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Show Profile is end -->
-        </section>
+        
       </div>
 
       <footer>
@@ -326,10 +208,10 @@
   <script src="/assets/compiled/js/app.js"></script>
   <script src="/assets/myown-js/logout.js"></script>
 
-  <!-- Need: Apexcharts -->
-  <script
-    src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/apexcharts/apexcharts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/dashboard.js"></script>
+  <script src="/assets/extensions/jquery/jquery.min.js"></script>
+  <script src="/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="/assets/static/js/pages/datatables.js"></script>
 </body>
 
 </html>
