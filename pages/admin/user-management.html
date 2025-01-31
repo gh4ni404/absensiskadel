@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Absensi - UPT SMKN 8 BONE</title>
+  <title>Data Guru - ABSENSISKADEL</title>
 
 
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
@@ -181,10 +181,55 @@
       <!-- Part of tombol open/close sidebar is end -->
 
       <div class="page-heading">
-        <h3>Manajeme Data Guru</h3>
-      </div>
-      <div class="page-content">
-        
+        <!-- Judul Halaman is here -->
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Manajemen Data Guru</h3>
+              <p class="text-subtitle text-muted">Daftar nama-nama guru, mapel dan kelas yang diampuh</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/pages/admin/index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Data Guru</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- Judul Halaman is end -->
+
+        <!-- Datatables is here -->
+        <section class="section">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Data Guru</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table" id="table1">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nama Guru</th>
+                      <th>User</th>
+                      <th>Password</th>
+                      <th>Profesi</th>
+                      <th>Mata Pelajaran</th>
+                      <th>Kelas</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Di isi oleh javascript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Datatables is end -->
       </div>
 
       <footer>
@@ -212,6 +257,7 @@
   <script src="/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
   <script src="/assets/static/js/pages/datatables.js"></script>
+  <script src="/data/script-data-guru.js"></script>
 </body>
 
 </html>
