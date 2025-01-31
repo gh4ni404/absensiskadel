@@ -4,17 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const userRole = localStorage.getItem('userRole');
 
   if (isLoggedIn !== 'true') {
-    document.body.style.display = 'none';
     window.location.href = "/authen/error-403.html";
-  } else if (userRole === 'admin' && window.location.pathname.includes('/pages/guru/index.html')) {
-    document.body.style.display = 'none';
+  } else if (userRole === 'admin' && window.location.pathname.includes('/pages/guru/')) {
     window.location.href = "/authen/error-403.html";
-  } else if (userRole === 'guru' && window.location.pathname.includes('/pages/admin/index.html')) {
-    document.body.style.display = 'none';
+  } else if (userRole === 'guru' && window.location.pathname.includes('/pages/admin/')) {
     window.location.href = "/authen/error-403.html";
   } else {
     document.body.style.display = 'block';
-    // document.body.style.display = 'block';
   }
 
 });
