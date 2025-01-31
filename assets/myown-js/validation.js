@@ -24,7 +24,7 @@ async function login(event) {
   try {
     const response = await fetch(webAppUrl, {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ action: 'login', username, password }),
 
     });
     const result = await response.json();
