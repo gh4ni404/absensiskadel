@@ -24,8 +24,7 @@ async function login(event) {
   try {
     const response = await fetch(webAppUrl, {
       method: 'POST',
-      body: JSON.stringify({ action: 'login', username, password }),
-
+      body: JSON.stringify({ action: 'login', username, password })
     });
     const result = await response.json();
 
@@ -33,6 +32,8 @@ async function login(event) {
       alert('Login berhasil! Selamat Datang ' + result.role);
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('userRole', result.role);
+      localStorage.setItem('nameUser', result.nama);
+      localStorage.setItem('userUser', result.user)
 
       if (result.role === 'admin') {
         window.location.href = '/pages/admin/index.html'; // Redirect ke halaman admin
