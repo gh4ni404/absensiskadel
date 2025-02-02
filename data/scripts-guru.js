@@ -45,7 +45,7 @@ function fetchData(day) {
           // Filter data berdasarkan hari
           table = $("#example").DataTable({
             ajax: url,
-            dom: 'rtip',
+            dom: 'Bfrtip',
             buttons: [
               {
                 extend: 'print',
@@ -55,13 +55,13 @@ function fetchData(day) {
                   $(win.document.body).find('table').addClass('table table-bordered');
 
                   $(win.document.body).prepend(`
-                      <div class="d-flex justify-content-between m-4">
-                        <img src="./LOGO PROVINSI.png" width="75" height="75">
+                      <div class="d-flex justify-content-between">
+                        <img src="/assets/images/LOGO PROVINSI.png" width="100">
                         <div class="text-center">
                           <h1>Laporan KBM Harian SMKN 8 Bone</h1>
                           <h4>${formattedDate}</h4>
                         </div>
-                        <img src="./LOGO SEKOLAH.png" width="75" height="75">
+                        <img src="/assets/images/LOGO SEKOLAH.png" width="100">
                       </div>
                     `);
                 }
