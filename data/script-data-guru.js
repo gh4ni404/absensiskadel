@@ -30,6 +30,7 @@ $(document).ready(function () {
     $('#tambahGuruBtn').on('click', async function () {
       resetForm();
       await loadMapelDropdown();
+      await loadKelasDropdown();
       $('#guruModal').modal('show');
     });
   }
@@ -44,13 +45,32 @@ async function loadMapelDropdown() {
     mapelDropdown.innerHTML = '<option value="">Pilih Mata Pelajaran</option>';
 
     mapelData.forEach((item) => {
-      const option = document.createElement('option');
-      option.value = item.nama_mapel;
-      option.textContent = item.nama_mapel;
-      mapelDropdown.appendChild(option)
+      const optionMapel = document.createElement('option');
+      optionMapel.value = item.nama_mapel;
+      optionMapel.textContent = item.nama_mapel;
+      mapelDropdown.appendChild(optionMapel);
     });
   } catch (error) {
     console.error("error memuat mata pelajaran: ", error);
+  }
+}
+
+async function loadKelasDropdown() {
+  try {
+    const response = await fetch(url + '?action=getKelas');
+    const kelasData = await response.json();
+
+    const kelasDropdown = document.getElementById('kelas');
+    kelasDropdown.innerHTML = '<option value="">Pilih Kelas</option>';
+
+    kelasData.forEach((item) => {
+      const option = document.createElement('option');
+      option.value = item.nama_kelas;
+      option.textContent = item.nama_kelas;
+      kelasDropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error("error memuat kelas: ",error);
   }
 }
 
@@ -100,14 +120,24 @@ async function editGuru(id) {
 
   // Pastikan dropdown terisi
   const mapelDropdown = document.getElementById('mapel');
-  const options = mapelDropdown.getElementsByTagName('option');
+  const kelasDropdown = document.getElementById('kelas');
+  const optionsMapel = mapelDropdown.getElementsByTagName('option');
+  const optionsKelas = kelasDropdown.getElementsByTagName('option');
 
   await loadMapelDropdown();
+  await loadKelasDropdown();
 
   // Menentukan mata pelajaran yang sesuai dari data guru
-  for (let option of options) {
+  for (let option of optionsMapel) {
     if (option.value === g.mapel) {
       option.selected = true;  // Pilih mata pelajaran yang sesuai
+      break;
+    }
+  }
+
+  for(let option of optionsKelas) {
+    if (option.value === g.kelas){
+      option.selected = true;
       break;
     }
   }
