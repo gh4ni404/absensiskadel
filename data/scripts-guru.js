@@ -83,6 +83,25 @@ function fetchData(day) {
                     });
                   });
 
+                  // ✅ TUNGGU SAMPAI SEMUA GAMBAR SELESAI DIMUAT SEBELUM PRINT
+                  let images = $(win.document.body).find('img');
+                  let totalImages = images.length;
+                  let imagesLoaded = 0;
+
+                  if (totalImages === 0) {
+                    setTimeout(() => win.print(), 500); // Jika tidak ada gambar, langsung print
+                    return;
+                  }
+
+                  images.on('load', function () {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                      setTimeout(() => win.print(), 500); // Semua gambar selesai dimuat, baru print
+                    }
+                  });
+
+                  // Jika dalam 3 detik gambar belum selesai dimuat, tetap lanjut print
+                  setTimeout(() => win.print(), 3000);
                 }
               },
               {
