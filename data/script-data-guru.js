@@ -19,8 +19,15 @@ $(document).ready(function () {
           data: null,
           render: function (data) {
             return `
-              <button class="btn btn-warning btn-sm" onclick="editGuru(${data.id})">Edit</button>
-              <button class="btn btn-danger btn-sm" onclick="deleteGuru(${data.id})">Hapus</button>
+            <div class='container'>
+              <div class="row text-center">
+                <div class="col-md-6 col-6">
+                  <button class="btn btn-warning btn-sm" onclick="editGuru(${data.id})"><i class="fas fa-fw fa-edit"></i></button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-danger btn-sm" onclick="deleteGuru(${data.id})"><i class="fas fa-fw fa-trash"></i></button>
+                </div>
+            </div>
             `;
           }
         }
