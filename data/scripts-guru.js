@@ -265,7 +265,9 @@ function setDefaultDay() {
 }
 
 function printPage() {
-  table.button(0).trigger();
+  setTimeout(() =>{
+    table.button(0).trigger();
+  }, 1500);
 }
 function exportPage() {
   table.button(1).trigger();
