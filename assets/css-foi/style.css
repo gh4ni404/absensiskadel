@@ -8787,7 +8787,7 @@ html {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #6206a8;
+  background-color: #fffdd8;
 }
 
 #mainNav .navbar-toggler {
@@ -8797,7 +8797,7 @@ html {
 }
 
 #mainNav .navbar-brand {
-  color: #6f42c1;
+  color: #fffdd8;
   font-weight: 700;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
@@ -8814,7 +8814,7 @@ html {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #6f42c1;
+  color: var(--bs-navbar-active-color);
 }
 
 @media (min-width: 992px) {
@@ -8836,7 +8836,7 @@ html {
   #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: #6206a8;
+    background-color: #fffdd8;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.25em;

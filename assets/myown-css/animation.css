@@ -1,16 +1,7 @@
 .table-wrapper {
   position: relative;
   overflow-x: scroll;
-  height: 71vh;
 }
-/* 
-#example thead th {
-  background-color: #343a40;
-  color: white;
-  font-size: 12px;
-  vertical-align: middle;
-  text-align: center;
-} */
 
 .loading-overlay {
   position: absolute;
@@ -57,151 +48,11 @@
   }
 }
 
-@media (max-width: 575.98px) {
-  .table-wrapper {
-    height: 77vh;
+@media (max-width: 768px) {
+  .foi-navbar {
+    font-size: medium;
   }
-
-  .d-vh {
-    height: 23vh;
+  .fs-6 {
+    font-size: small;
   }
-
-  .fs-7 {
-    font-size: 10px;
-    padding: 2px;
-  }
-
-  .fs-relative {
-    font-size: 12px;
-  }
-
-  .m-y-0 {
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-  .py-relative {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
-
-  /* #example thead th {
-    background-color: #343a40;
-    color: white;
-    font-size: 11px;
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  #example tbody td {
-    font-size: 11px;
-    vertical-align: middle;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  } */
-
-  .img-size {
-    width: 50px;
-    height: auto;
-  }
-}
-
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .table-wrapper {
-    height: 70vh;
-  }
-
-  .d-vh {
-    height: 30vh;
-  }
-
-  .py-relative {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
-
-  .img-size {
-    width: 75px;
-    height: auto;
-  }
-
-  .fs-7 {
-    font-size: 8px;
-    padding: 2px;
-  }
-
-  .fs-relative {
-    font-size: 12px;
-  }
-/* 
-  #example thead th {
-    background-color: #343a40;
-    color: white;
-    font-size: 13px;
-    vertical-align: middle;
-    text-align: center;
-  } */
-
-}
-
-@media (min-width: 768px) {
-  .table-wrapper {
-    height: 70vh;
-  }
-
-  .d-vh {
-    height: 30vh;
-  }
-  
-  .m-y-0 {
-    margin-top: 9px;
-    margin-bottom: 9px;
-  }
-
-  /* #example thead th {
-    background-color: #343a40;
-    color: white;
-    font-size: 14px;
-    vertical-align: middle;
-    text-align: center;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  } */
-}
-
-@media (min-width: 1200px) {
-  .table-wrapper {
-    height: 70vh;
-  }
-
-  .d-vh {
-    height: 30vh;
-  }
-
-  .m-y-0 {
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
-
-  #imgFluid {
-    max-width: 100px;
-    max-height: 100px;
-  }
-
-  /* #example thead th {
-    background-color: #343a40;
-    color: white;
-    font-size: 10px;
-    vertical-align: middle;
-    text-align: center;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  #example tbody td {
-    font-size: 10px;
-    vertical-align: middle;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  } */
 }
