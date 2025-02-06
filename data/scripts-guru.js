@@ -89,14 +89,14 @@ function fetchData(day) {
                   let imagesLoaded = 0;
 
                   if (totalImages === 0) {
-                    setTimeout(() => win.print(), 500); // Jika tidak ada gambar, langsung print
+                    setTimeout(() => win.print(), 5000); // Jika tidak ada gambar, langsung print
                     return;
                   }
 
                   images.on('load', function () {
                     imagesLoaded++;
                     if (imagesLoaded === totalImages) {
-                      setTimeout(() => win.print(), 500); // Semua gambar selesai dimuat, baru print
+                      setTimeout(() => win.print(), 5000); // Semua gambar selesai dimuat, baru print
                     }
                   });
 
@@ -264,8 +264,19 @@ function setDefaultDay() {
   $("#floatingSelect").val(defaultDay).trigger("change");
 }
 
+function ensureImagesLoaded(container, callback) {
+  let images = $(container).find('img');
+  let loaded = 0;
+  let total = images.length;
+  if (total === 0) return callback();
+  images.on('load', function () {
+    if (++loaded === total) callback();
+  });
+  setTimeout(callback, 3000);
+}
+
 function printPage() {
-  setTimeout(() =>{
+  setTimeout(() => {
     table.button(0).trigger();
   }, 1500);
 }
