@@ -64,13 +64,14 @@ function fetchData(day) {
                         <img src="/assets/images/LOGO SEKOLAH.png" width="100">
                       </div>
                     `);
-                  $(win.document.body).find('td').each(function () {
-                    const img = $(this).find('img');
-                    if (img.length > 0) {
-                      const imgSrc = img.attr('src');
-                      $(this).html(`<img src="${imgSrc}" style="max-width: 100px; max-height: 100px;">`);
-                    }
-                  });
+
+                  // $(win.document.body).find('td').each(function () {
+                  //   const img = $(this).find('img');
+                  //   if (img.length > 0) {
+                  //     const imgSrc = img.attr('src');
+                  //     $(this).html(`<img src="${imgSrc}" style="max-width: 100px; max-height: 100px;">`);
+                  //   }
+                  // });
 
                   // Salin ulang semua gambar dari tabel utama ke halaman print
                   $('#example tbody tr').each(function (index) {
