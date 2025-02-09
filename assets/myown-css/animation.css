@@ -3,6 +3,20 @@
   overflow-x: scroll;
 }
 
+.table-scroll-container{
+  position: relative;
+}
+
+.top-scroll-wrapper{
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 5px;
+}
+
+.top-scroll{
+  height: 1px;
+}
+
 .loading-overlay {
   position: absolute;
   top: 0;
