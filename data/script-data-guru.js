@@ -19,13 +19,13 @@ $(document).ready(function () {
           data: null,
           render: function (data) {
             return `
-            <div class='container'>
-              <div class="row text-center">
-                <div class="col-md-6 col-6">
-                  <button class="btn btn-warning btn-sm" onclick="editGuru(${data.id})"><i class="fas fa-fw fa-edit"></i></button>
+            <div class='d-flex align-items-center justify-content-center'>
+              <div class="row row-cols-2 g-3">
+                <div class="col">
+                  <button class="btn btn-warning" onclick="editGuru(${data.id})"><i class="fas fa-fw fa-edit"></i></button>
                 </div>
-                <div class="col-md-6">
-                  <button class="btn btn-danger btn-sm" onclick="deleteGuru(${data.id})"><i class="fas fa-fw fa-trash"></i></button>
+                <div class="col">
+                  <button class="btn btn-danger" onclick="deleteGuru(${data.id})"><i class="fas fa-fw fa-trash"></i></button>
                 </div>
             </div>
             `;
