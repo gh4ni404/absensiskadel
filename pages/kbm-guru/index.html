@@ -20,6 +20,7 @@
   <div class="page-heading">
     <section style="height: 25vh;">
       <div class="fixed-top bg-light-warning">
+        <!-- Navbar start -->
         <nav class="navbar navbar-expand-lg navbar-dark foi-navbar " id="mainNav">
           <div class="container">
             <a href="#page-top" class="navbar-brand"><img src="/assets/images/ABSENSI - SKADEL.svg" alt="logo"></a>
@@ -57,8 +58,9 @@
             </div>
           </div>
         </nav>
-        <div class="bg-light-warning">
+        <!-- Navbar End -->
 
+        <div class="bg-light-warning">
           <!-- Judul di sini -->
           <div class="row justify-content-center">
             <div class="col-lg-auto col-md-auto col-sm-auto col-auto">
@@ -79,9 +81,8 @@
           </div>
           <!-- judul end -->
 
-          <!-- Navbar -->
+          <!-- Navbar days start -->
           <ul class="nav nav-tabs justify-content-center mx-0 px-0">
-            <!-- <div class="container" style="background-color: #9150c2;"> -->
             <li>
               <a href="#" role="tab" onclick="fetchData('SENIN')" class="nav-link" data-bs-toggle="tab">Senin</a>
             </li>
@@ -100,21 +101,19 @@
             <li>
               <a href="#" role="tab" onclick="fetchData('SABTU')" class="nav-link" data-bs-toggle="tab">Sabtu</a>
             </li>
-            <!-- </div> -->
           </ul>
-          <!-- Navbar End -->
+          <!-- Navbar days End -->
 
           <!-- Tombol Print dan search disini -->
-          <div class="d-flex flex-row align-items-center">
+          <div class="d-flex flex-row align-items-center bg-body-tertiary">
             <div class="col-lg-10 col-md-9 col-sm-9 col-9">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Cari Data Guru">
                 <label for="floatingInput">Cari Data Guru</label>
               </div>
             </div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1">
-              <div class="d-flex flex-row align-items-center">
-
+            <div class="col-lg col-md col-sm col">
+              <div class="d-flex flex-row justify-content-end">
                 <button class="btn btn-secondary me-1" onclick="printPage()">
                   <i class="bi bi-printer"></i>
                 </button>
@@ -122,9 +121,6 @@
                   <i class="bi bi-save"></i>
                 </button>
               </div>
-            </div>
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-1">
-
             </div>
           </div>
           <div class="container-fluid">
@@ -135,22 +131,14 @@
     </section>
     <section style="height: auto;">
       <!-- Table disini -->
-      <div class="table-container mt-auto">
+      <div class="table-container mt-auto position-absolute">
         <div class="loading-overlay d-none">
           <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loding...</span>
           </div>
         </div>
-
-        <div class="table-scroll-container">
-          <!-- Scrollbar atas start -->
-          <div class="top-scroll-wrapper">
-            <div class="top-scroll"></div>
-          </div>
-          <!-- Scrollbar atas end -->
-          <div class="table-responsive table-wrapper">
-            <table id="example" class="table table-bordered align-middle" style="width: 100%"></table>
-          </div>
+        <div class="table-responsive table-wrapper">
+          <table id="example" class="table table-bordered align-middle" style="width: 100%"></table>
         </div>
       </div>
       <!-- Table End -->
