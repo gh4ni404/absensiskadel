@@ -22,10 +22,10 @@ $(document).ready(function () {
             <div class='d-flex align-items-center justify-content-center'>
               <div class="row row-cols-2 g-3">
                 <div class="col">
-                  <button class="btn btn-warning" onclick="editGuru(${data.id})"><i class="fas fa-fw fa-edit"></i></button>
+                  <button class="btn btn-warning btn-sm" onclick="editGuru(${data.id})"><i class="fas fa-fw fa-edit"></i></button>
                 </div>
                 <div class="col">
-                  <button class="btn btn-danger" onclick="deleteGuru(${data.id})"><i class="fas fa-fw fa-trash"></i></button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteGuru(${data.id})"><i class="fas fa-fw fa-trash"></i></button>
                 </div>
             </div>
             `;
