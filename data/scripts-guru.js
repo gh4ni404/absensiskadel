@@ -1,5 +1,5 @@
 const baseUrl = "https://script.google.com/macros/s/AKfycbwxxDPptmg0b4BlIJJ-pie4POoeMIJjQGFEsHj7oAHHTU3YEEK9c2CCQb1n2D4UxB5YOg/exec";
-const days = ["SABTU", "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
+const days = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
 const loadingData = document.getElementById("loading");
 
 let table;
