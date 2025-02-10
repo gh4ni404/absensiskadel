@@ -15,33 +15,20 @@ function clsCache() {
 clsCache();
 
 function fetchData(day) {
-  // let url = baseUrl;
-  // if (day) {
-  //   url += `?day=${day}`;
-  // }
-
   let url = day ? `${baseUrl}?day=${day}` : baseUrl;
-
-  // const tabs = document.querySelectorAll('.nav-link');
-  // tabs.forEach(tab => tab.classList.remove('active'));
-
   document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
-
   const activeTab = document.querySelector(`a[onclick="fetchData('${day}')"]`);
   if (activeTab) {
     activeTab.classList.add('active');
   }
-
   const tableWrapper = document.querySelector('.table-wrapper');
   tableWrapper.classList.remove('fade-in');
   tableWrapper.classList.remove('fade-out');
-
   $('#example').addClass('fade').removeClass('show');
   setTimeout(() => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-
         // Tampilkan tanggal jika data ada
         const rawDate = new Date(data.tanggal);
         const options = {
@@ -53,7 +40,6 @@ function fetchData(day) {
         const formattedDate = rawDate.toLocaleDateString('id-ID', options);
         const sanitizedDate = formattedDate.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
         document.getElementById("date").textContent = `${formattedDate}`;
-
         // Memastikan jika DataTable sudah diinisialisasi
         if (!table) {
           // Filter data berdasarkan hari
@@ -67,7 +53,6 @@ function fetchData(day) {
                 customize: function (win) {
                   $(win.document.body).css('font-size', '10pt');
                   $(win.document.body).find('table').addClass('table table-bordered');
-
                   $(win.document.body).prepend(`
                       <div class="d-flex justify-content-between">
                         <img src="/assets/images/LOGO PROVINSI.png" width="100">
@@ -78,26 +63,15 @@ function fetchData(day) {
                         <img src="/assets/images/LOGO SEKOLAH.png" width="100">
                       </div>
                     `);
-
-                  // $(win.document.body).find('td').each(function () {
-                  //   const img = $(this).find('img');
-                  //   if (img.length > 0) {
-                  //     const imgSrc = img.attr('src');
-                  //     $(this).html(`<img src="${imgSrc}" style="max-width: 100px; max-height: 100px;">`);
-                  //   }
-                  // });
-
                   // Salin ulang semua gambar dari tabel utama ke halaman print
                   $('#example tbody tr').each(function (index) {
                     let originalRow = $(this);
                     let printRow = $(win.document.body).find('table tbody tr').eq(index);
-
                     originalRow.find('td').each(function (colIndex) {
                       let cellContent = $(this).html(); // Ambil isi sel termasuk gambar
                       $(printRow).find('td').eq(colIndex).html(cellContent); // Salin ke halaman print
                     });
                   });
-
                   // ✅ TUNGGU SAMPAI SEMUA GAMBAR SELESAI DIMUAT SEBELUM PRINT
                   let images = $(win.document.body).find('img').toArray();
                   let imageLoadPromises = images.map(img => {
@@ -109,28 +83,10 @@ function fetchData(day) {
                       }
                     });
                   });
-
                   Promise.all(imageLoadPromises).then(() => {
                     setTimeout(() => win.print(), 500);
                   });
                   setTimeout(() => win.print(), 5000);
-                  // let totalImages = images.length;
-                  // let imagesLoaded = 0;
-
-                  // if (totalImages === 0) {
-                  //   setTimeout(() => win.print(), 500); // Jika tidak ada gambar, langsung print
-                  //   return;
-                  // }
-
-                  // images.on('load', function () {
-                  //   imagesLoaded++;
-                  //   if (imagesLoaded === totalImages) {
-                  //     setTimeout(() => win.print(), 500); // Semua gambar selesai dimuat, baru print
-                  //   }
-                  // });
-
-                  // // Jika dalam 3 detik gambar belum selesai dimuat, tetap lanjut print
-                  // setTimeout(() => win.print(), 300);
                 }
               },
               {
@@ -265,7 +221,6 @@ function fetchData(day) {
         $('#example').removeClass('fade').addClass('fade show');
       }).catch(error => {
         console.error("Ada yang salah nih BOSKUU:", error);
-        // swal("Error", "Terjadi kesalahan saat mengambil data", error);
       });
   }, 500);
 }
@@ -276,7 +231,6 @@ function renderDoc(data) {
   }
   const imageUrl = data.replace("https://drive.google.com/open?id=", "https://drive.google.com/thumbnail?id=");
   const cachedImage = localStorage.getItem(imageUrl);
-
   if (cachedImage) {
     return `
         <div class="text-center">
@@ -328,12 +282,10 @@ function printPage() {
   const images = document.querySelectorAll('#example img');
   let loadedCount = 0;
   let totalImages = images.length
-
   if (totalImages === 0) {
     table.button(0).trigger();
     return;
   }
-
   images.forEach((img) => {
     if (img.complete) {
       loadedCount++;
@@ -346,7 +298,6 @@ function printPage() {
       };
     }
   });
-
   setTimeout(() => {
     if (loadedCount < totalImages) {
       console.warn("Beberapa gambar belum dimuat, tetap mencetak");
