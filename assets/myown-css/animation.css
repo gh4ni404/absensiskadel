@@ -1,3 +1,10 @@
+@media print {
+  img {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
 .table-wrapper {
   position: relative;
   overflow-x: scroll;

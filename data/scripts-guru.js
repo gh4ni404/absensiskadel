@@ -3,25 +3,29 @@ const days = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
 const loadingData = document.getElementById("loading");
 
 let table;
-function clsCache(){
+function clsCache() {
   const lastClear = localStorage.getItem("lastCacheClear");
   const now = new Date();
 
-  if(!lastClear || (now - new Date(lastClear)) > 7*24*60*60*1000) {
+  if (!lastClear || (now - new Date(lastClear)) > 7 * 24 * 60 * 60 * 1000) {
     localStorage.clear();
     localStorage.setItem("lastCacheClear", now.toISOString());
   }
 }
-
 clsCache();
-function fetchData(day) {
-  let url = baseUrl;
-  if (day) {
-    url += `?day=${day}`;
-  }
 
-  const tabs = document.querySelectorAll('.nav-link');
-  tabs.forEach(tab => tab.classList.remove('active'));
+function fetchData(day) {
+  // let url = baseUrl;
+  // if (day) {
+  //   url += `?day=${day}`;
+  // }
+
+  let url = day ? `${baseUrl}?day=${day}` : baseUrl;
+
+  // const tabs = document.querySelectorAll('.nav-link');
+  // tabs.forEach(tab => tab.classList.remove('active'));
+
+  document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
 
   const activeTab = document.querySelector(`a[onclick="fetchData('${day}')"]`);
   if (activeTab) {
@@ -95,24 +99,38 @@ function fetchData(day) {
                   });
 
                   // ✅ TUNGGU SAMPAI SEMUA GAMBAR SELESAI DIMUAT SEBELUM PRINT
-                  let images = $(win.document.body).find('img');
-                  let totalImages = images.length;
-                  let imagesLoaded = 0;
-
-                  if (totalImages === 0) {
-                    setTimeout(() => win.print(), 5000); // Jika tidak ada gambar, langsung print
-                    return;
-                  }
-
-                  images.on('load', function () {
-                    imagesLoaded++;
-                    if (imagesLoaded === totalImages) {
-                      setTimeout(() => win.print(), 5000); // Semua gambar selesai dimuat, baru print
-                    }
+                  let images = $(win.document.body).find('img').toArray();
+                  let imageLoadPromises = images.map(img => {
+                    return new Promise(resolve => {
+                      if(img.complete) {
+                        resolve();
+                      } else {
+                        img.onload = () => resolve();
+                      }
+                    });
                   });
 
-                  // Jika dalam 3 detik gambar belum selesai dimuat, tetap lanjut print
-                  setTimeout(() => win.print(), 3000);
+                  Promise.all(imageLoadPromises).then(() => {
+                    setTimeout(() => win.print(), 500);
+                  });
+                  setTimeout(() => win.print(), 5000);
+                  // let totalImages = images.length;
+                  // let imagesLoaded = 0;
+
+                  // if (totalImages === 0) {
+                  //   setTimeout(() => win.print(), 500); // Jika tidak ada gambar, langsung print
+                  //   return;
+                  // }
+
+                  // images.on('load', function () {
+                  //   imagesLoaded++;
+                  //   if (imagesLoaded === totalImages) {
+                  //     setTimeout(() => win.print(), 500); // Semua gambar selesai dimuat, baru print
+                  //   }
+                  // });
+
+                  // // Jika dalam 3 detik gambar belum selesai dimuat, tetap lanjut print
+                  // setTimeout(() => win.print(), 300);
                 }
               },
               {
@@ -259,7 +277,7 @@ function renderDoc(data) {
   const imageUrl = data.replace("https://drive.google.com/open?id=", "https://drive.google.com/thumbnail?id=");
   const cachedImage = localStorage.getItem(imageUrl);
 
-  if(cachedImage) {
+  if (cachedImage) {
     return `
         <div class="text-center">
           <a href="${data}" target="_blank">
@@ -329,14 +347,14 @@ function printPage() {
     }
   });
 
-
   setTimeout(() => {
-    if(loadedCount < totalImages) {
+    if (loadedCount < totalImages) {
       console.warn("Beberapa gambar belum dimuat, tetap mencetak");
     }
     table.button(0).trigger();
   }, 3000);
 }
+
 function exportPage() {
   table.button(1).trigger();
 }
