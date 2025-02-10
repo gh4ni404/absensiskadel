@@ -41,27 +41,58 @@ async function loadStudent() {
   }
 }
 
-function enableEditMode(row) {
-  const cells = row.cells;
-  for (let i = 1; i < cells.length - 1; i++) {
-    const cell = cells[i];
-    const originalValue = cell.innerText;
-    cell.innerHTML = `<input type="text" value="${originalValue}" class="form-control">`;
-  }
+async function enableEditMode(row) {
+  try {
+    const [resKelas, resGender] = await Promise.all([
+      fetch(url + '?action=getKelas'),
+      fetch(url + '?action=getGender')
+    ]);
+    const kelas = await resKelas.json();
+    const gender = await resGender.json();
+    console.log(kelas);
+    console.log(gender);
+    const cells = row.cells;
+    const namaSiswaCell = cells[1];
+    const namaSiswaValue = namaSiswaCell.innerText;
+    namaSiswaCell.innerHTML = `<input type="text" value="${namaSiswaValue}" class="form-control">`;
 
-  const actionCell = cells[cells.length - 1];
-  actionCell.innerHTML = `
+    const genderCell = cells[2];
+    const genderValue = genderCell.innerText;
+    genderCell.innerHTML = `
+  <select class="form-control">
+    ${gender.map(option => `
+      <option value="${option.jenis_kelamin}" ${option.jenis_kelamin === genderValue ? 'selected' : ''}>${option.jenis_kelamin}</option>
+      `).join('')}
+  </select>
+  `;
+
+
+    const kelasCell = cells[3];
+    const kelasValue = kelasCell.innerText;
+    kelasCell.innerHTML = `
+  <select class="form-control">
+    ${kelas.map(option => `
+      <option value="${option.nama_kelas}" ${option.nama_kelas === kelasValue ? 'selected' : ''}>${option.nama_kelas}</option>
+      `).join('')}
+  </select>
+  `;
+
+    const actionCell = cells[cells.length - 1];
+    actionCell.innerHTML = `
   <button onclick="saveEditMode(this)">Simpan</button>
   <button onclick="cancelEditMode(this)">Batal</button>
   `;
+  } catch (error) {
+    console.error("terjadi kesalahan saat memuat data: ", error);
+  }
 }
 
 function saveEditMode(button) {
   const row = button.closest('tr');
   const id = row.cells[0].innerText;
   const nama_siswa = row.cells[1].querySelector('input').value;
-  const jenis_kelamin = row.cells[2].querySelector('input').value;
-  const kelas = row.cells[3].querySelector('input').value;
+  const jenis_kelamin = row.cells[2].querySelector('select').value;
+  const kelas = row.cells[3].querySelector('select').value;
 
   fetch(url, {
     method: 'POST',
