@@ -3,7 +3,17 @@ const days = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
 const loadingData = document.getElementById("loading");
 
 let table;
+function clsCache(){
+  const lastClear = localStorage.getItem("lastCacheClear");
+  const now = new Date();
 
+  if(!lastClear || (now - new Date(lastClear)) > 7*24*60*60*1000) {
+    localStorage.clear();
+    localStorage.setItem("lastCacheClear", now.toISOString());
+  }
+}
+
+clsCache();
 function fetchData(day) {
   let url = baseUrl;
   if (day) {
@@ -246,16 +256,36 @@ function renderDoc(data) {
   if (!data || data === "?") {
     return "?";
   }
-  console.log(data);
   const imageUrl = data.replace("https://drive.google.com/open?id=", "https://drive.google.com/thumbnail?id=");
+  const cachedImage = localStorage.getItem(imageUrl);
 
-  return `
-      <div class="text-center">
-        <a href="${data}" target="_blank">
-          <img src ="${imageUrl}" alt="Dokumentasi" id="imgFluid" class="img-fluid">      
-        </a>
-      </div>
-  `;
+  if(cachedImage) {
+    return `
+        <div class="text-center">
+          <a href="${data}" target="_blank">
+            <img src ="${cachedImage}" alt="Dokumentasi" id="imgFluid" class="img-fluid">      
+          </a>
+        </div>
+    `;
+  } else {
+    const img = new Image();
+    img.src = imageUrl;
+    img.classList.add("img-fluid");
+    img.onload = () => {
+      try {
+        localStorage.setItem(imageUrl, img.src);
+      } catch (error) {
+        console.warn("LocalStorage Penuh atau error: ", error);
+      }
+    };
+    return `
+        <div class="text-center">
+          <a href="${data}" target="_blank">
+            <img src ="${imageUrl}" alt="Dokumentasi" id="imgFluid" class="img-fluid">      
+          </a>
+        </div>
+    `;
+  }
 }
 
 function setDefaultDay() {
@@ -277,9 +307,35 @@ function ensureImagesLoaded(container, callback) {
 }
 
 function printPage() {
-  setTimeout(() => {
+  const images = document.querySelectorAll('#example img');
+  let loadedCount = 0;
+  let totalImages = images.length
+
+  if (totalImages === 0) {
     table.button(0).trigger();
-  }, 1500);
+    return;
+  }
+
+  images.forEach((img) => {
+    if (img.complete) {
+      loadedCount++;
+    } else {
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setTimeout(() => table.buttton(0).trigger(), 1000);
+        }
+      };
+    }
+  });
+
+
+  setTimeout(() => {
+    if(loadedCount < totalImages) {
+      console.warn("Beberapa gambar belum dimuat, tetap mencetak");
+    }
+    table.button(0).trigger();
+  }, 3000);
 }
 function exportPage() {
   table.button(1).trigger();
