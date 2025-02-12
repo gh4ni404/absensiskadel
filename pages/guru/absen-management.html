@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - ABSENSISKADEL</title>
+  <title>Absensi Siswa - ABSENSISKADEL</title>
 
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app-dark.css">
@@ -83,7 +83,7 @@
           <ul class="menu">
             <!-- Part of Menu is here -->
             <li class="sidebar-title">Menu</li>
-            <li class="sidebar-item active">
+            <li class="sidebar-item">
               <a href="/pages/guru/index.html" class="sidebar-link">
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
@@ -101,7 +101,7 @@
             <!-- Part of Rekap absensi siswa is end -->
 
             <!-- Part of Absensi siswa is here -->
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
               <a href="/pages/guru/absen-management.html" class='sidebar-link'>
                 <i class="bi bi-card-checklist"></i>
                 <span>Absensi Siswa</span>
@@ -145,134 +145,143 @@
       <!-- Part of tombol open/close sidebar is end -->
 
       <div class="page-heading">
-        <h3>Dashboard</h3>
-      </div>
-      <div class="page-content">
-        <section class="row">
-          <div class="col-12 col-lg-9">
-            <!-- Row Card Is Here -->
-            <div class="row">
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon purple mb-2">
-                          <i class="iconly-boldUser1"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_siswa"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon blue mb-2">
-                          <i class="iconly-boldProfile"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Guru</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_guru"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon green mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Absensi Bulan Ini</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapAbsensiPerBulan"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon red mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Persen Kehadiran Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapPersen"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
+        <!-- Judul Halaman is here -->
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Absensi Siswa</h3>
+              <p class="text-subtitle text-muted"></p>
             </div>
-            <!-- Row Card is end -->
-
-            
-            <!-- Chart for rekap absensi is here, plan visualize Hadir, Sakit, Izin, Alpa perkelas -->
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Rekap Status kehadiran Siswa</h4>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-profile-visit"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/pages/guru/absen-management.html">Absensi Siswa</a></li>
+                </ol>
+              </nav>
             </div>
-            <!-- Chart for rekap absensi is end -->
-
-            
           </div>
+        </div>
+        <!-- Judul Halaman is end -->
 
-          <!-- Show Profile is here -->
-          <div class="col-12 col-lg-3">
-            <div class="card">
-              <div class="card-body py-4 px-2">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl">
-                    <img src="/assets/images/LOGO SEKOLAH.png" alt="">
-                  </div>
-                  <div class="ms-3 name">
-                    <h5 class="font-bold" id="namaGuru"></h5>
-                    <h6 class="text-muted mb-0" id="userGuru"></h6>
-                    <h6 class="text-muted" id="roleUser"></h6>
-                  </div>
+        <!-- Datatables is here -->
+        <section class="section">
+          <div class="modal fade" id="guruModal" tabindex="-1" aria-labelledby="guruModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="guruModalLabel">Tambah/Edit Guru</h5>
+                  <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="guruForm" data-parsley-validate>
+                    <input type="hidden" id="id" name="id">
+                    <div class="row">
+                      <div class="col-md-6 col-12">
+                        <div class="form-group mandatory">
+                          <label for="nama_guru" class="form-label">Nama Guru</label>
+                          <input type="text" class="form-control" id="nama_guru" placeholder="Nama Guru"
+                            data-parsley-required="true">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="user_guru" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="user_guru" placeholder="Username"
+                            data-parsley-required="true">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="password_guru" class="form-label">Password</label>
+                          <input type="text" class="form-control" id="password_guru" placeholder="Password"
+                            data-parsley-required="true">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="role" class="form-label">Role</label>
+                          <input type="text" class="form-control" id="role" placeholder="Role"
+                            data-parsley-required="true">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="mapel" class="form-label">Mata Pelajaran</label>
+                          <!-- <input type="text" class="form-control" id="mapel" placeholder="Mata Pelajaran" data-parsley-required="true"> -->
+                          <select class="form-control" id="mapel" data-parsley-required="true">
+                            <option value="" disabled selected>Pilih Mata Pelajaran</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <div class="form-group">
+                          <label for="kelas" class="form-label">Kelas</label>
+                          <!-- <input type="text" class="form-control" id="kelas" placeholder="Kelas" data-parsley-required="true"> -->
+                          <select class="form-control" id="kelas" data-parsley-required="true">
+                            <option value="" disabled selected>Pilih Kelas</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" form="guruForm" id="submitBtn" class="btn btn-primary me-1 mb-1">
+                          Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger me-1 mb-1">
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Show Profile is end -->
-
+          <div class="card">
+            <div class="card-body">
+              <h1>Isi Absensi</h1>
+              <form id="absenForm">
+                <label for="mapel">Mata Pelajaran:</label>
+                <select name="" id="mapel" required></select>
+                <label for="kelas">Kelas:</label>
+                <select name="" id="kelas" required></select>
+                <label for="hari">Hari:</label>
+                <select name="" id="hari" required></select>
+                <label for="tanggal">Mata Pelajaran:</label>
+                <input type="date" name="" id="tanggal" required>
+                <div id="siswaList">
+                  <!-- Daftar siswa akan ditampilkan disini melalui javascript -->
+                </div>  
+              </form>
+              <div class="table-responsive">
+                <div class="container text-end">
+                  <button id="tambahGuruBtn " class="btn btn-info mb-3">
+                    <i class="fas fa-fw fa-plus"></i>
+                  </button>
+                </div>
+                <table class="table display" id="guruTable">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nama Guru</th>
+                      <th>User</th>
+                      <th>Password</th>
+                      <th>Role</th>
+                      <th>Mata Pelajaran</th>
+                      <th>Kelas</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Di isi oleh javascript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </section>
+        <!-- Datatables is end -->
       </div>
 
       <footer>
@@ -296,6 +305,7 @@
   <script src="/assets/compiled/js/app.js"></script>
   <script src="/assets/myown-js/logout.js"></script>
   <script src="/assets/myown-js/profile.js"></script>
+  <script src="/data/script-data-absen.js"></script>
 
   <!-- Need: Apexcharts -->
   <script
