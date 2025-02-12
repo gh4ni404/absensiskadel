@@ -6,7 +6,6 @@ let table;
 function clsCache() {
   const lastClear = localStorage.getItem("lastCacheClear");
   const now = new Date();
-
   if (!lastClear || (now - new Date(lastClear)) > 7 * 24 * 60 * 60 * 1000) {
     localStorage.clear();
     localStorage.setItem("lastCacheClear", now.toISOString());
@@ -48,46 +47,6 @@ function fetchData(day) {
             dom: 'Bfrtip',
             buttons: [
               {
-                extend: 'print',
-                title: '',
-                customize: function (win) {
-                  $(win.document.body).css('font-size', '10pt');
-                  $(win.document.body).find('table').addClass('table table-bordered');
-                  $(win.document.body).prepend(`
-                      <div class="d-flex justify-content-between">
-                        <img src="/assets/images/LOGO PROVINSI.png" width="100">
-                        <div class="text-center">
-                          <h1>Laporan KBM Harian SMKN 8 Bone</h1>
-                          <h4>${formattedDate}</h4>
-                        </div>
-                        <img src="/assets/images/LOGO SEKOLAH.png" width="100">
-                      </div>
-                    `);
-                  // Salin ulang semua gambar dari tabel utama ke halaman print
-                  $('#example tbody tr').each(function (index) {
-                    let originalRow = $(this);
-                    let printRow = $(win.document.body).find('table tbody tr').eq(index);
-                    originalRow.find('td').each(function (colIndex) {
-                      let cellContent = $(this).html(); // Ambil isi sel termasuk gambar
-                      $(printRow).find('td').eq(colIndex).html(cellContent); // Salin ke halaman print
-                    });
-                  });
-                  // ✅ TUNGGU SAMPAI SEMUA GAMBAR SELESAI DIMUAT SEBELUM PRINT
-                  let images = $(win.document.body).find('img').toArray();
-                  let imageLoadPromises = images.map(img => {
-                    return new Promise(resolve => {
-                      if(img.complete) {
-                        resolve();
-                      } else {
-                        img.onload = () => resolve();
-                      }
-                    });
-                  });
-                  Promise.all(imageLoadPromises).then(() => {
-                    setTimeout(() => win.print(), 500);
-                  });
-                  setTimeout(() => win.print(), 5000);
-                }
               },
               {
                 extend: 'excel',
@@ -197,11 +156,9 @@ function fetchData(day) {
               }
             },
           });
-
           setInterval(function () {
             table.ajax.reload(null, false);
           }, 2000);
-
           table.on('xhr', function () {
             loadingData.classList.add("fade-out");
             setTimeout(() => {
@@ -267,43 +224,65 @@ function setDefaultDay() {
   $("#floatingSelect").val(defaultDay).trigger("change");
 }
 
-function ensureImagesLoaded(container, callback) {
-  let images = $(container).find('img');
-  let loaded = 0;
-  let total = images.length;
-  if (total === 0) return callback();
-  images.on('load', function () {
-    if (++loaded === total) callback();
-  });
-  setTimeout(callback, 3000);
-}
-
 function printPage() {
-  const images = document.querySelectorAll('#example img');
-  let loadedCount = 0;
-  let totalImages = images.length
-  if (totalImages === 0) {
-    table.button(0).trigger();
-    return;
-  }
-  images.forEach((img) => {
-    if (img.complete) {
-      loadedCount++;
-    } else {
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          setTimeout(() => table.buttton(0).trigger(), 1000);
+  const win = window.open('', '_blank');
+  let printContent = `
+    <html>
+    <head>
+      <title>Laporan KBM Harian SMKN 8 Bone</title>
+      <link rel="stylesheet" href="/assets/compiled/css/app.css">
+    </head>
+    <body class="bg-white">
+      <div class="d-flex justify-content-between m-5">
+        <img src="/assets/images/LOGO PROVINSI.png" width="100">
+        <div class="text-center">
+          <h1>Laporan KBM Harian SMKN 8 Bone</h1>
+          <h4>${document.getElementById("date").textContent}</h4>
+        </div>
+        <img src="/assets/images/LOGO SEKOLAH.png" width="100">
+      </div>
+    
+      <table class="table table-bordered">
+        <thead>${document.querySelector("#example thead").innerHTML}</thead>
+        <tbody>
+  `;
+  let imageLoadPromises = [];
+  document.querySelectorAll("#example tbody tr").forEach(row => {
+    let rowData = "<tr>";
+    row.querySelectorAll("td").forEach((td) => {
+      let cellContent = td.innerHTML;
+      let imgTag = td.querySelector("img");
+      if (imgTag) {
+        let originalSrc = imgTag.src;
+        let cachedSrc = localStorage.getItem(originalSrc);
+        if (cachedSrc) {
+          cellContent = `<img src="${cachedSrc}" class="img-fluid">`;
         }
-      };
-    }
+      }
+      rowData += `<td>${cellContent}</td>`;
+    });
+    rowData += "</tr>";
+    printContent += rowData;
   });
-  setTimeout(() => {
-    if (loadedCount < totalImages) {
-      console.warn("Beberapa gambar belum dimuat, tetap mencetak");
-    }
-    table.button(0).trigger();
-  }, 3000);
+  printContent += `
+        </tbody>
+      </table>
+      <script src="/assets/extensions/jquery/jquery.min.js"></script>
+      <script src="/assets/extensions/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+      <script src="/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+      <script src="/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+      <script src="/assets/static/js/pages/datatables.js"></script>
+    </body>
+    </html>
+  `;
+  win.document.open();
+  win.document.write(printContent);
+  win.document.close();
+  // Tunggu gambar dimuat sebelum mencetak
+  Promise.all(imageLoadPromises).then(() => {
+    setTimeout(() => win.print(), 1000);
+  });
 }
 
 function exportPage() {
