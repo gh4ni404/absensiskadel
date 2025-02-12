@@ -1,36 +1,44 @@
 const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec';
-let tableSiswa;
+let tableAbsen;
+const userRole = localStorage.getItem('userRole');
 
-async function loadStudent() {
+// if(userRole === 'guru') {
+//   document.getElementById
+// }
+
+async function loadAbsen() {
   try {
-    const response = await fetch(url + '?action=getSiswa');
-    const { header, siswa } = await response.json();
+    const response = await fetch(url + '?action=getAbsen');
+    const {header, absen} = await response.json();
 
-    if ($.fn.DataTable.isDataTable('#siswaTable')) {
-      tableSiswa.destroy();
+    if ($.fn.DataTable.isDataTable('#absenTable')) {
+      tableAbsen.destroy();
     }
 
-    const thead = document.querySelector('#siswaTable thead');
+    const thead = document.querySelector('#absenTable thead');
     thead.innerHTML = `
       <tr>
         ${header.map(col => `<th>${col}</th>`).join('')}
         <th>Aksi</th>
       </tr>
     `;
-    const tbody = document.querySelector('#siswaTable tbody');
-    tbody.innerHTML = siswa.map(siswa => `
+    const tbody = document.querySelector('#absenTable tbody');
+    tbody.innerHTML = absen.map(absen => `
       <tr>
-        <td>${siswa.id}</td>
-        <td>${siswa.nama_siswa}</td>
-        <td>${siswa.jenis_kelamin}</td>
-        <td>${siswa.kelas}</td>
+        <td>${absen.id}</td>
+        <td>${absen.id_siswa}</td>
+        <td>${absen.mapel}</td>
+        <td>${absen.user_guru}</td>
+        <td>${absen.hari}</td>
+        <td>${absen.tanggal}</td>
+        <td>${absen.status}</td>
         <td>
           <button class="btn btn-warning" onclick="enableEditMode(this.closest('tr'))"><i class="fas fa-fw fa-edit"></i></button>
-          <button class="btn btn-danger" onclick="deleteSiswa(${siswa.id})"><i class="fas fa-fw fa-trash"></i></button>
+          <button class="btn btn-danger" onclick="deleteSiswa(${absen.id})"><i class="fas fa-fw fa-trash"></i></button>
       </tr>
     `).join('');
 
-    tableSiswa = $('#siswaTable').DataTable({
+    tableSiswa = $('#absenTable').DataTable({
       paging: false,
       searching: true,
       ordering: true,
@@ -103,12 +111,12 @@ function saveEditMode(button) {
     .then(response => response.json())
     .then(result => {
       alert(result.message);
-      loadStudent();
+      loadAbsen();
     });
 }
 
 function cancelEditMode(button) {
-  loadStudent();
+  loadAbsen();
 }
 
-loadStudent();
+loadAbsen();
