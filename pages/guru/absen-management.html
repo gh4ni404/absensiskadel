@@ -165,110 +165,38 @@
 
         <!-- Datatables is here -->
         <section class="section">
-          <div class="modal fade" id="guruModal" tabindex="-1" aria-labelledby="guruModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="guruModalLabel">Tambah/Edit Guru</h5>
-                  <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close"></button>
-                </div>
-                <div class="modal-body">
-                  <form id="guruForm" data-parsley-validate>
-                    <input type="hidden" id="id" name="id">
-                    <div class="row">
-                      <div class="col-md-6 col-12">
-                        <div class="form-group mandatory">
-                          <label for="nama_guru" class="form-label">Nama Guru</label>
-                          <input type="text" class="form-control" id="nama_guru" placeholder="Nama Guru"
-                            data-parsley-required="true">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="user_guru" class="form-label">Username</label>
-                          <input type="text" class="form-control" id="user_guru" placeholder="Username"
-                            data-parsley-required="true">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="password_guru" class="form-label">Password</label>
-                          <input type="text" class="form-control" id="password_guru" placeholder="Password"
-                            data-parsley-required="true">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="role" class="form-label">Role</label>
-                          <input type="text" class="form-control" id="role" placeholder="Role"
-                            data-parsley-required="true">
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="mapel" class="form-label">Mata Pelajaran</label>
-                          <!-- <input type="text" class="form-control" id="mapel" placeholder="Mata Pelajaran" data-parsley-required="true"> -->
-                          <select class="form-control" id="mapel" data-parsley-required="true">
-                            <option value="" disabled selected>Pilih Mata Pelajaran</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12">
-                        <div class="form-group">
-                          <label for="kelas" class="form-label">Kelas</label>
-                          <!-- <input type="text" class="form-control" id="kelas" placeholder="Kelas" data-parsley-required="true"> -->
-                          <select class="form-control" id="kelas" data-parsley-required="true">
-                            <option value="" disabled selected>Pilih Kelas</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" form="guruForm" id="submitBtn" class="btn btn-primary me-1 mb-1">
-                          Submit
-                        </button>
-                        <button type="reset" class="btn btn-danger me-1 mb-1">
-                          Reset
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="card">
             <div class="card-body">
               <h1>Isi Absensi</h1>
               <form id="absenForm">
                 <label for="mapel">Mata Pelajaran:</label>
-                <select name="" id="mapel" required></select>
+                <select class="form-control" id="mapel"></select>
+
                 <label for="kelas">Kelas:</label>
-                <select name="" id="kelas" required></select>
+                <select class="form-control" id="kelas"></select>
+
                 <label for="hari">Hari:</label>
-                <select name="" id="hari" required></select>
-                <label for="tanggal">Mata Pelajaran:</label>
-                <input type="date" name="" id="tanggal" required>
-                <div id="siswaList">
+                <select id="hari"></select>
+
+                <label for="tanggal">Tanggal:</label>
+                <input type="date" id="tanggal">
+
+                <!-- <div id="siswaList"> -->
                   <!-- Daftar siswa akan ditampilkan disini melalui javascript -->
-                </div>  
+                <!-- </div>   -->
               </form>
               <div class="table-responsive">
-                <div class="container text-end">
+                <!-- <div class="container text-end">
                   <button id="tambahGuruBtn " class="btn btn-info mb-3">
                     <i class="fas fa-fw fa-plus"></i>
                   </button>
-                </div>
-                <table class="table display" id="guruTable">
+                </div> -->
+                <table class="table display" id="siswaList">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Nama Guru</th>
-                      <th>User</th>
-                      <th>Password</th>
-                      <th>Role</th>
-                      <th>Mata Pelajaran</th>
+                      <th>Nama Siswa</th>
+                      <th>Jenis Kelamin</th>
                       <th>Kelas</th>
                       <th>Aksi</th>
                     </tr>
@@ -301,16 +229,19 @@
   <!-- content end -->
   <script src="/assets/static/js/components/dark.js"></script>
   <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="/assets/extensions/jquery/jquery.min.js"></script>
 
   <script src="/assets/compiled/js/app.js"></script>
   <script src="/assets/myown-js/logout.js"></script>
-  <script src="/assets/myown-js/profile.js"></script>
-  <script src="/data/script-data-absen.js"></script>
+  <!-- <script src="/assets/myown-js/profile.js"></script> -->
+  <script src="/data/script-absen.js"></script>
 
   <!-- Need: Apexcharts -->
-  <script
+  <!-- <script
     src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/apexcharts/apexcharts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/dashboard.js"></script> -->
 
 </body>
 

@@ -59,29 +59,28 @@ async function enableEditMode(row) {
     const genderCell = cells[2];
     const genderValue = genderCell.innerText;
     genderCell.innerHTML = `
-  <select class="form-control">
-    ${gender.map(option => `
-      <option value="${option.jenis_kelamin}" ${option.jenis_kelamin === genderValue ? 'selected' : ''}>${option.jenis_kelamin}</option>
-      `).join('')}
-  </select>
-  `;
-
+      <select class="form-control">
+        ${gender.map(option => `
+          <option value="${option.jenis_kelamin}" ${option.jenis_kelamin === genderValue ? 'selected' : ''}>${option.jenis_kelamin}</option>
+        `).join('')}
+      </select>
+    `;
 
     const kelasCell = cells[3];
     const kelasValue = kelasCell.innerText;
     kelasCell.innerHTML = `
-  <select class="form-control">
-    ${kelas.map(option => `
-      <option value="${option.nama_kelas}" ${option.nama_kelas === kelasValue ? 'selected' : ''}>${option.nama_kelas}</option>
-      `).join('')}
-  </select>
-  `;
+      <select class="form-control">
+        ${kelas.map(option => `
+          <option value="${option.nama_kelas}" ${option.nama_kelas === kelasValue ? 'selected' : ''}>${option.nama_kelas}</option>
+        `).join('')}
+      </select>
+    `;
 
     const actionCell = cells[cells.length - 1];
     actionCell.innerHTML = `
-  <button class="btn btn-info" onclick="saveEditMode(this)"><i class="fas fa-fw fa-check"></i></button>
-  <button class="btn btn-danger" onclick="cancelEditMode(this)"><i class="fas fa-fw fa-times"></i></button>
-  `;
+      <button class="btn btn-info" onclick="saveEditMode(this)"><i class="fas fa-fw fa-check"></i></button>
+      <button class="btn btn-danger" onclick="cancelEditMode(this)"><i class="fas fa-fw fa-times"></i></button>
+    `;
   } catch (error) {
     console.error("terjadi kesalahan saat memuat data: ", error);
   }
