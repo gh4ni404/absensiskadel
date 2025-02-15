@@ -11,10 +11,12 @@ async function loadGuruData() {
   mapelSelect.innerHTML = guruData.mapel.map(mapel => `
     <option value="${mapel}">${mapel}</option>
     `).join('');
+
   const kelasSelect = document.getElementById('kelas');
   kelasSelect.innerHTML = guruData.kelas.map(kelas => `
     <option value="${kelas}">${kelas}</option>
     `).join('');
+
   kelasSelect.addEventListener('change', () => {
     loadSiswaByKelas(kelasSelect.value);
   });
@@ -25,51 +27,51 @@ async function loadGuruData() {
 async function loadSiswaByKelas(kelas) {
   const response = await fetch(`${url}?action=getSiswaByKelas&kelas=${kelas}`);
   const siswaData = await response.json();
-  const tbody = document.querySelector('#siswaList tbody');
-  console.log(tbody)
-  tbody.innerHTML = siswaData.map(siswa => `
-    <tr>
-      <td>${siswa.id}</td>
-      <td>${siswa.nama_siswa}</td>
-      <td>${siswa.jenis_kelamin}</td>
-      <td>${siswa.kelas}</td>
-      <td>
-        <select id="status_${siswa.id}">
-          <option value="Hadir">Hadir</option>
-          <option value="Izin">Izin</option>
-          <option value="Sakit">Sakit</option>
-          <option value="Alpa">Alpa</option>
-        </select>
-      </td>
-    </tr>
-    `).join('');
-
-  // tableAbsen = $('#siswaList').DataTable({
-  //   paging: false,
-  //   searching: true,
-  //   ordering: true,
-  //   infor: true
-  // });
-
-  console.log(siswaData);
-  // const siswaList = document.getElementById('siswaList');
-  // siswaList.innerHTML = siswaData.map(siswa => `
-  // <div>
-  //   <label>${siswa.nama_siswa}</label>
-  //   <select id="status_${siswa.id}">
-  //     <option value="Hadir">Hadir</option>
-  //     <option value="Izin">Izin</option>
-  //     <option value="Sakit">Sakit</option>
-  //     <option value="Alpa">Alpa</option>
-  //   </select>
-  // </div>
-  //   `).join('');
-
-
+  const siswaList = document.getElementById('siswaList');
+  siswaList.innerHTML = siswaData.map(siswa => `
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="status_${siswa.id}">${siswa.nama_siswa}</label>
+          <select class="form-select" id="status_${siswa.id}">
+            <option value="Hadir">Hadir</option>
+            <option value="Izin">Izin</option>
+            <option value="Sakit">Sakit</option>
+            <option value="Alpa">Alpa</option>
+          </select>
+        </div>
+      `).join('');
 }
 
 document.getElementById('absenForm').addEventListener('submit', async function (e) {
   e.preventDefault();
-})
+  const mapel = document.getElementById('mapel').value;
+  const kelas = document.getElementById('kelas').value;
+  const tanggal = document.getElementById('tanggal').value;
+  const user_guru = user; // Ambil username guru sebagai ID guru
+
+  // Ambil status kehadiran untuk setiap siswa
+  const siswaData = await fetch(`${url}?action=getSiswaByKelas&kelas=${kelas}`);
+  const siswaList = await siswaData.json();
+  const absensiData = siswaList.map(siswa => ({
+    id_siswa: siswa.id,
+    mapel: mapel,
+    user_guru,
+    hari: new Date(tanggal).toLocaleDateString('id-ID', { weekday: 'long' }),
+    tanggal,
+    status: document.getElementById(`status_${siswa.id}`).value
+  }));
+  console.log('data yang dikirim: ', absensiData);
+
+  // Kirim data absensi ke backend
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      action: 'addAbsen',
+      absensiData
+    })
+  });
+  const result = await response.json();
+  console.log('Hasilnya : ', result);
+  alert(result.message);
+});
 
 loadGuruData();
