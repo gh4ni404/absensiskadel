@@ -27,6 +27,29 @@ async function loadGuruData() {
 async function loadSiswaByKelas(kelas) {
   const response = await fetch(`${url}?action=getSiswaByKelas&kelas=${kelas}`);
   siswaListData = await response.json(); // Simpan data siswa
+  // const siswaList = document.getElementById('siswaList');
+  // siswaList.innerHTML = siswaListData.map(siswa => `
+  //   <div class="card p-3 mb-2 border">
+  //     <h6>${siswa.nama_siswa}</h6>
+  //     <div class="form-check form-check-inline">
+  //       <input class="form-check-input" type="radio" name="status_${siswa.id}" id="hadir_${siswa.id}" value="Hadir" checked>
+  //       <label class="form-check-label" for="hadir_${siswa.id}">Hadir</label>
+  //     </div>
+  //     <div class="form-check form-check-inline">
+  //       <input class="form-check-input" type="radio" name="status_${siswa.id}" id="izin_${siswa.id}" value="Izin">
+  //       <label class="form-check-label" for="izin_${siswa.id}">Izin</label>
+  //     </div>
+  //     <div class="form-check form-check-inline">
+  //       <input class="form-check-input" type="radio" name="status_${siswa.id}" id="sakit_${siswa.id}" value="Sakit">
+  //       <label class="form-check-label" for="sakit_${siswa.id}">Sakit</label>
+  //     </div>
+  //     <div class="form-check form-check-inline">
+  //       <input class="form-check-input" type="radio" name="status_${siswa.id}" id="alpa_${siswa.id}" value="Alpa">
+  //       <label class="form-check-label" for="alpa_${siswa.id}">Alpa</label>
+  //     </div>
+  //     <input type="text" class="form-control mt-2" id="keterangan_${siswa.id}" placeholder="Keterangan (opsional)">
+  //   </div>
+  // `).join('');
   const siswaTable = document.getElementById('siswaTableBody');
   siswaTable.innerHTML = siswaListData.map((siswa, index) => `
     <tr>
@@ -50,9 +73,9 @@ async function loadSiswaByKelas(kelas) {
           <label class="form-check-label" for="alpa_${siswa.id}">Alpa</label>
         </div>
       </td>
-      <!-- <td>
+      <td>
         <input type="text" class="form-control" id="keterangan_${siswa.id}" placeholder="Keterangan (opsional)">
-      </td> -->
+      </td>
     </tr>
   `).join('');
 }
@@ -76,7 +99,7 @@ document.getElementById('absenForm').addEventListener('submit', async function (
     hari: new Date(tanggal).toLocaleDateString('id-ID', { weekday: 'long' }),
     tanggal,
     status: document.querySelector(`input[name="status_${siswa.id}"]:checked`).value,
-    // keterangan: document.getElementById(`keterangan_${siswa.id}`).value || "" // Ambil keterangan jika ada
+    keterangan: document.getElementById(`keterangan_${siswa.id}`).value || "" // Ambil keterangan jika ada
   }));
 
   console.log('Data yang dikirim:', absensiData);

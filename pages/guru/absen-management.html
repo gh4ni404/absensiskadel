@@ -177,17 +177,44 @@
           <div class="card">
             <div class="card-body">
               <h1>Isi Absensi</h1>
-              <form id="absenForm">
-                <label for="mapel">Mata Pelajaran:</label>
-                <select id="mapel" required></select>
-                <label for="kelas">Kelas:</label>
-                <select id="kelas" required></select>
-                <label for="tanggal">Tanggal:</label>
-                <input type="date" id="tanggal" required>
-                <div id="siswaList">
-                  <!-- Daftar siswa akan ditampilkan di sini -->
+              <form id="absenForm" data-parsley-validate>
+                <div class="row">
+                  <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="mapel" class="form-label">Mata Pelajaran:</label>
+                      <select id="mapel" class="form-control" required></select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="kelas" class="form-label">Kelas:</label>
+                      <select id="kelas" class="form-control" required></select>
+                    </div>
+                  </div>
                 </div>
-                <button type="submit">Simpan</button>
+                <div class="form-group mandatory mb-2">
+                  <label for="tanggal" class="form-label">Tanggal:</label>
+                  <input type="date" class="form-control" id="tanggal" data-parsley-required="true">
+                </div>
+                <!-- <div id="siswaList"> -->
+                <!-- Daftar siswa akan ditampilkan di sini -->
+                <!-- </div> -->
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover mt-3">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Status Kehadiran</th>
+                        <!-- <th>Keterangan</th> -->
+                      </tr>
+                    </thead>
+                    <tbody id="siswaTableBody">
+                      <!-- Data siswa akan dimuat di sini -->
+                    </tbody>
+                  </table>
+                </div>
+                <button type="submit" class="btn btn-warning">Simpan</button>
               </form>
             </div>
           </div>
@@ -216,6 +243,8 @@
 
   <script src="/assets/extensions/jquery/jquery.min.js"></script>
   <script src="/assets/static/js/pages/form-element-select.js"></script>
+  <script src="/assets/extensions/parsleyjs/parsley.min.js"></script>
+  <script src="/assets/static/js/pages/parsley.js"></script>
 
   <script src="/assets/compiled/js/app.js"></script>
   <script src="/assets/myown-js/logout.js"></script>
