@@ -30,22 +30,22 @@ async function loadSiswaByKelas(kelas) {
   const siswaTable = document.getElementById('siswaTableBody');
   siswaTable.innerHTML = siswaListData.map((siswa, index) => `
     <tr>
-      <td>${index + 1}</td>
-      <td>${siswa.nama_siswa}</td>
-      <td>
-        <div class="form-check form-check-inline">
+      <td class="text-center">${index + 1}</td>
+      <td class="w-md-50">${siswa.nama_siswa}</td>
+      <td class="w-md-50 text-md-center">
+        <div class="form-check form-check-success form-check-inline">
           <input class="form-check-input" type="radio" name="status_${siswa.id}" id="hadir_${siswa.id}" value="Hadir" checked>
           <label class="form-check-label" for="hadir_${siswa.id}">Hadir</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-warning form-check-inline">
           <input class="form-check-input" type="radio" name="status_${siswa.id}" id="izin_${siswa.id}" value="Izin">
           <label class="form-check-label" for="izin_${siswa.id}">Izin</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-info form-check-inline">
           <input class="form-check-input" type="radio" name="status_${siswa.id}" id="sakit_${siswa.id}" value="Sakit">
           <label class="form-check-label" for="sakit_${siswa.id}">Sakit</label>
         </div>
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-danger form-check-inline">
           <input class="form-check-input" type="radio" name="status_${siswa.id}" id="alpa_${siswa.id}" value="Alpa">
           <label class="form-check-label" for="alpa_${siswa.id}">Alpa</label>
         </div>
