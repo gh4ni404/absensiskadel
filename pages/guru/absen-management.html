@@ -9,6 +9,7 @@
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app-dark.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/iconly.css">
+  <link rel="stylesheet" href="/assets/extensions/flatpickr/flatpickr.min.css">
 
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css" />
@@ -181,20 +182,20 @@
                 <div class="row">
                   <div class="col-md-6 col-12">
                     <div class="form-group mb-2">
-                      <label for="mapel" class="form-label">Mata Pelajaran:</label>
+                      <label for="mapel" class="form-label">Mata Pelajaran : </label>
                       <select id="mapel" class="form-control" required></select>
                     </div>
                   </div>
                   <div class="col-md-6 col-12">
                     <div class="form-group mb-2">
-                      <label for="kelas" class="form-label">Kelas:</label>
+                      <label for="kelas" class="form-label">Kelas : </label>
                       <select id="kelas" class="form-control" required></select>
                     </div>
                   </div>
                 </div>
                 <div class="form-group mandatory mb-2">
-                  <label for="tanggal" class="form-label">Tanggal:</label>
-                  <input type="date" class="form-control" id="tanggal" data-parsley-required="true">
+                  <label for="tanggal" class="form-label">Tanggal : </label>
+                  <input type="date" class="form-control flatpickr-no-config" id="tanggal" placeholder="Pilih Tanggal" data-parsley-required="true">
                 </div>
                 <!-- <div id="siswaList"> -->
                 <!-- Daftar siswa akan ditampilkan di sini -->
@@ -214,7 +215,9 @@
                     </tbody>
                   </table>
                 </div>
-                <button type="submit" class="btn btn-warning">Simpan</button>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-warning">Simpan</button>
+                </div>
               </form>
             </div>
           </div>
@@ -245,6 +248,8 @@
   <script src="/assets/static/js/pages/form-element-select.js"></script>
   <script src="/assets/extensions/parsleyjs/parsley.min.js"></script>
   <script src="/assets/static/js/pages/parsley.js"></script>
+  <script src="/assets/extensions/flatpickr/flatpickr.min.js"></script>
+  <script src="/assets/static/js/pages/date-picker.js"></script>
 
   <script src="/assets/compiled/js/app.js"></script>
   <script src="/assets/myown-js/logout.js"></script>

@@ -32,7 +32,7 @@ async function loadSiswaByKelas(kelas) {
     <tr>
       <td class="text-center">${index + 1}</td>
       <td class="w-md-50">${siswa.nama_siswa}</td>
-      <td class="w-md-50 text-md-center">
+      <td class="text-md-center">
         <div class="form-check form-check-success form-check-inline">
           <input class="form-check-input" type="radio" name="status_${siswa.id}" id="hadir_${siswa.id}" value="Hadir" checked>
           <label class="form-check-label" for="hadir_${siswa.id}">Hadir</label>
