@@ -4,7 +4,6 @@ async function fetchDashData() {
   try {
     let response = await fetch(`${url}?action=getDashboardData`);
     let data = await response.json();
-    console.log(data);
     document.getElementById("jumlah_siswa").innerText = data.jumlah_siswa;
     document.getElementById("jumlah_guru").innerText = data.jumlah_guru;
     document.getElementById("rekapHadir").innerText = `Hadir: ${data.rekap_bulan_ini.hadir}`;
@@ -20,16 +19,15 @@ async function fetchDashData() {
 async function loadChart() {
   let response = await fetch(`${url}?action=getDashboardData`);
   let data = await response.json();
-
   const options = {
     series: [
-      { name: "Hadir", data: data.rekap_tahunan.hadir },
       { name: "Sakit", data: data.rekap_tahunan.sakit },
+      { name: "Hadir", data: data.rekap_tahunan.hadir },
       { name: "Izin", data: data.rekap_tahunan.izin },
       { name: "Alpa", data: data.rekap_tahunan.alpa },
     ],
     chart: { type: "area", height: 350, toolbar: { show: false } },
-    plotOptions: { bar: { horizontal: false, columnWidth: "55%" } },
+    grid: { show: false },
     dataLabels: { enabled: false },
     xaxis: {
       categories: ["-", "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
@@ -39,8 +37,6 @@ async function loadChart() {
     show: false,
     yaxis: { labels: { show: false } }
   };
-  console.log(options);
-
   const chart = new ApexCharts(document.querySelector("#chart-profile-visit"), options);
   chart.render();
 }
