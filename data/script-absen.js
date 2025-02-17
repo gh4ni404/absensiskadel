@@ -86,12 +86,17 @@ async function loadSiswaByKelas(kelas) {
 absenForm.addEventListener('submit', async function (e) {
   e.preventDefault();
   const mapel = document.getElementById('mapel').value;
-  const kelas = document.getElementById('kelas').value;
+  // const kelas = document.getElementById('kelas').value;
   const tanggal = document.getElementById('tanggal').value;
   const user_guru = user;
 
   if (!tanggal) {
-    
+    setTimeout(()=> {
+      Toast.fire({
+      icon: 'error',
+      title: 'Masukkan Tanggal terlebih dahulu'
+    });
+  }, 900);
     
     return;
   }
