@@ -17,4 +17,33 @@ async function fetchDashData() {
   }
 }
 
+async function loadChart() {
+  let response = await fetch(`${url}?action=getDashboardData`);
+  let data = await response.json();
+
+  const options = {
+    series: [
+      { name: "Hadir", data: data.rekap_tahunan.hadir },
+      { name: "Sakit", data: data.rekap_tahunan.sakit },
+      { name: "Izin", data: data.rekap_tahunan.izin },
+      { name: "Alpa", data: data.rekap_tahunan.alpa },
+    ],
+    chart: { type: "area", height: 350, toolbar: { show: false } },
+    plotOptions: { bar: { horizontal: false, columnWidth: "55%" } },
+    dataLabels: { enabled: false },
+    xaxis: {
+      categories: ["-", "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
+      axisBorder: { show: false },
+      axisTicks: { show: false }
+    },
+    show: false,
+    yaxis: { labels: { show: false } }
+  };
+  console.log(options);
+
+  const chart = new ApexCharts(document.querySelector("#chart-profile-visit"), options);
+  chart.render();
+}
+
 fetchDashData();
+loadChart();
