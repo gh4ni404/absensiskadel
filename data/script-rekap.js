@@ -11,6 +11,7 @@ async function fetchDashData() {
     document.getElementById("rekapIzin").innerText = `Izin: ${data.rekap_bulan_ini.izin}`;
     document.getElementById("rekapSakit").innerText = `Sakit: ${data.rekap_bulan_ini.sakit}`;
     document.getElementById("rekapAlpa").innerText = `Alpa: ${data.rekap_bulan_ini.alpa}`;
+    document.getElementById("rekapPersen").innerText = `${data.rekap_persen}%`;
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan fetch:", error)
   }

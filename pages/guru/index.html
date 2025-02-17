@@ -83,7 +83,7 @@
           <ul class="menu">
             <!-- Part of Menu is here -->
             <li class="sidebar-title">Menu</li>
-            <li class="sidebar-item active">
+            <li class="sidebar-item active shadow">
               <a href="/pages/guru/index.html" class="sidebar-link">
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
@@ -161,9 +161,9 @@
           <div class="col-12 col-lg-9">
             <!-- Row Card Is Here -->
             <div class="row">
-              <!-- Card is here -->
+              <!-- Card jumlah siswa is here -->
               <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card h-75 shadow">
                   <div class="card-body px-4 py-4-5">
                     <div class="row">
                       <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
@@ -179,11 +179,11 @@
                   </div>
                 </div>
               </div>
-              <!-- Card is end -->
+              <!-- Card jumlah siswa is end -->
 
-              <!-- Card is here -->
+              <!-- Card jumlah guru is here -->
               <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card h-75 shadow">
                   <div class="card-body px-4 py-4-5">
                     <div class="row">
                       <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
@@ -199,11 +199,11 @@
                   </div>
                 </div>
               </div>
-              <!-- Card is end -->
+              <!-- Card jumlah guru is end -->
 
-              <!-- Card is here -->
+              <!-- Card rekap absensi bulan ini is here -->
               <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card h-75 shadow">
                   <div class="card-body px-4 py-4-5">
                     <div class="row">
                       <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
@@ -216,38 +216,38 @@
                         <h6 class="font-extrabold mb-0" id="rekapAbsensiPerBulan"></h6> -->
                         <div class="carousel slide" id="carouselExampleCaptions" data-bs-ride="carousel">
                           <ol class="carousel-indicators">
-                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></li>
+                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="d-none active"></li>
+                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="d-none"></li>
+                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="d-none"></li>
+                            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" class="d-none"></li>
                           </ol>
                           <div class="carousel-inner">
                             <div class="carousel-item active">
-                              <img src="/assets/compiled/png/1.png" alt="..." class="d-block w-100">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h6>Rekap Absensi Bulan Ini</h6>
-                                <p id="rekapHadir"></p>
+                              <!-- <img src="/assets/compiled/png/1.png" alt="..." class="d-block w-100"> -->
+                              <div>
+                                <h6 class="text-muted font-semibold">Absensi Bulan Ini</h6>
+                                <p class="font-extrabold mb-0" id="rekapHadir"></p>
                               </div>
                             </div>
                             <div class="carousel-item">
-                              <img src="/assets/compiled/png/2.png" alt="..." class="d-block w-100">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h6>Rekap Absensi Bulan Ini</h6>
-                                <p id="rekapIzin"></p>
+                              <!-- <img src="/assets/compiled/png/2.png" alt="..." class="d-block w-100"> -->
+                              <div>
+                                <h6 class="text-muted font-semibold">Absensi Bulan Ini</h6>
+                                <p class="font-extrabold mb-0" id="rekapIzin"></p>
                               </div>
                             </div>
                             <div class="carousel-item">
-                              <img src="/assets/compiled/png/3.png" alt="..." class="d-block w-100">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h6>Rekap Absensi Bulan Ini</h6>
-                                <p id="rekapSakit"></p>
+                              <!-- <img src="/assets/compiled/png/3.png" alt="..." class="d-block w-100"> -->
+                              <div>
+                                <h6 class="text-muted font-semibold">Absensi Bulan Ini</h6>
+                                <p class="font-extrabold mb-0" id="rekapSakit"></p>
                               </div>
                             </div>
                             <div class="carousel-item">
-                              <img src="/assets/compiled/png/4.png" alt="..." class="d-block w-100">
-                              <div class="carousel-caption d-none d-md-block">
-                                <h6>Rekap Absensi Bulan Ini</h6>
-                                <p id="rekapAlpa"></p>
+                              <!-- <img src="/assets/compiled/png/4.png" alt="..." class="d-block w-100"> -->
+                              <div>
+                                <h6 class="text-muted font-semibold">Absensi Bulan Ini</h6>
+                                <p class="font-extrabold mb-0" id="rekapAlpa"></p>
                               </div>
                             </div>
                           </div>
@@ -257,11 +257,11 @@
                   </div>
                 </div>
               </div>
-              <!-- Card is end -->
+              <!-- Card rekap absensi bulan ini is end -->
 
-              <!-- Card is here -->
+              <!-- Card rekap persen is here -->
               <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
+                <div class="card h-75 shadow">
                   <div class="card-body px-4 py-4-5">
                     <div class="row">
                       <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
@@ -277,15 +277,14 @@
                   </div>
                 </div>
               </div>
-              <!-- Card is end -->
+              <!-- Card rekap persen is end -->
             </div>
             <!-- Row Card is end -->
-
 
             <!-- Chart for rekap absensi is here, plan visualize Hadir, Sakit, Izin, Alpa perkelas -->
             <div class="row">
               <div class="col-12">
-                <div class="card">
+                <div class="card shadow">
                   <div class="card-header">
                     <h4>Rekap Status kehadiran Siswa</h4>
                   </div>
@@ -296,13 +295,11 @@
               </div>
             </div>
             <!-- Chart for rekap absensi is end -->
-
-
           </div>
 
           <!-- Show Profile is here -->
           <div class="col-12 col-lg-3">
-            <div class="card">
+            <div class="card shadow">
               <div class="card-body py-4 px-2">
                 <div class="d-flex align-items-center">
                   <div class="avatar avatar-xl">
@@ -316,7 +313,7 @@
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div class="card shadow">
               <div class="card-header">
                 <h4>Riwayat Absensi</h4>
               </div>
@@ -324,7 +321,7 @@
                 <div id="riwayat_absensi"></div>
               </div>
             </div>
-            <div class="card">
+            <div class="card shadow">
               <div class="card-header">
                 <h4>Detail Siswa</h4>
               </div>
