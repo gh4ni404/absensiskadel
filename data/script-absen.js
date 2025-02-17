@@ -60,7 +60,7 @@ async function loadSiswaByKelas(kelas) {
       <td class="w-md-50">${siswa.nama_siswa}</td>
       <td class="text-md-center">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="status_${siswa.id}" id="hadir_${siswa.id}" value="Hadir" checked>
+          <input class="form-check-input" type="radio" name="status_${siswa.id}" id="hadir_${siswa.id}" value="Hadir">
           <label class="form-check-label" for="hadir_${siswa.id}">Hadir</label>
         </div>
         <div class="form-check form-check-inline">
@@ -72,7 +72,7 @@ async function loadSiswaByKelas(kelas) {
           <label class="form-check-label" for="sakit_${siswa.id}">Sakit</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="status_${siswa.id}" id="alpa_${siswa.id}" value="Alpa">
+          <input class="form-check-input" type="radio" name="status_${siswa.id}" id="alpa_${siswa.id}" value="Alpa" checked>
           <label class="form-check-label" for="alpa_${siswa.id}">Alpa</label>
         </div>
       </td>
