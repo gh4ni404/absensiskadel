@@ -20,22 +20,19 @@ async function loadChart() {
   let response = await fetch(`${url}?action=getDashboardData`);
   let data = await response.json();
   const options = {
+    annotations: { position: "back" },
     series: [
-      { name: "Sakit", data: data.rekap_tahunan.sakit },
-      { name: "Hadir", data: data.rekap_tahunan.hadir },
-      { name: "Izin", data: data.rekap_tahunan.izin },
-      { name: "Alpa", data: data.rekap_tahunan.alpa },
+      { name: "Hadir", data: data.rekap_tahunan.hadir.slice(1) },
+      { name: "Sakit", data: data.rekap_tahunan.sakit.slice(1) },
+      { name: "Izin", data: data.rekap_tahunan.izin.slice(1) },
+      { name: "Alpa", data: data.rekap_tahunan.alpa.slice(1) },
     ],
-    chart: { type: "area", height: 350, toolbar: { show: false } },
-    grid: { show: false },
+    chart: { type: "bar", height: 250, toolbar: { show: false } },
     dataLabels: { enabled: false },
     xaxis: {
-      categories: ["-", "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
-      axisBorder: { show: false },
-      axisTicks: { show: false }
+      categories: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
+
     },
-    show: false,
-    yaxis: { labels: { show: false } }
   };
   const chart = new ApexCharts(document.querySelector("#chart-profile-visit"), options);
   chart.render();
