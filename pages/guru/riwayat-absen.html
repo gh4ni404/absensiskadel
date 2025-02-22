@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - ABSENSISKADEL</title>
+  <title>Riwayat Absensi - ABSENSISKADEL</title>
 
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app-dark.css">
@@ -110,7 +110,7 @@
             <!-- Part of Absensi siswa is end -->
 
             <!-- Part of Riwayat Absensi is here -->
-            <li class="sidebar-item active">
+            <li class="sidebar-item active shadow">
               <a href="/pages/guru/riwayat-absen.html" class='sidebar-link'>
                 <i class="fas fa-fw fa-history"></i>
                 <span>Riwayat Absensi</span>
@@ -154,151 +154,47 @@
       <!-- Part of tombol open/close sidebar is end -->
 
       <div class="page-heading">
-        <h3>Riwayat</h3>
-      </div>
-      <div class="page-content">
-        <section class="row">
-          <div class="col-12 col-lg-9">
-            <!-- Row Card Is Here -->
-            <div class="row">
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon purple mb-2">
-                          <i class="iconly-boldUser1"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_siswa"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon blue mb-2">
-                          <i class="iconly-boldProfile"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Jumlah Guru</h6>
-                        <h6 class="font-extrabold mb-0" id="jumlah_guru"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon green mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Absensi Bulan Ini</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapAbsensiPerBulan"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
-
-              <!-- Card is here -->
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-star">
-                        <div class="stats-icon red mb-2">
-                          <i class="iconly-boldCalendar"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semi-bold">Rekap Persen Kehadiran Siswa</h6>
-                        <h6 class="font-extrabold mb-0" id="rekapPersen"></h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Card is end -->
+        <!-- Judul Halaman is Here -->
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Riwayat Absensi Siswa</h3>
             </div>
-            <!-- Row Card is end -->
-
-            
-            <!-- Chart for rekap absensi is here, plan visualize Hadir, Sakit, Izin, Alpa perkelas -->
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Rekap Status kehadiran Siswa</h4>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-profile-visit"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/pages/guru/index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item active">Riwayat Absensi</li>
+                </ol>
+              </nav>
             </div>
-            <!-- Chart for rekap absensi is end -->
-
-            
           </div>
+        </div>
+        <!-- Judul Halaman is End -->
 
-          <!-- Show Profile is here -->
-          <div class="col-12 col-lg-3">
-            <div class="card">
-              <div class="card-body py-4 px-2">
-                <div class="d-flex align-items-center">
-                  <div class="avatar avatar-xl">
-                    <img src="/assets/images/LOGO SEKOLAH.png" alt="">
-                  </div>
-                  <div class="ms-3 name">
-                    <h5 class="font-bold" id="namaGuru"></h5>
-                    <h6 class="text-muted mb-0" id="userGuru"></h6>
-                    <h6 class="text-muted" id="roleUser"></h6>
-                  </div>
+        <section class="section">
+          <!-- Bagian Menampilkan riwayat absens siswa is here -->
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="container text-end">
+
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h4>Riwayat Absensi</h4>
-              </div>
-              <div class="card-content pb-4">
-                <div id="riwayat_absensi"></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h4>Detail Siswa</h4>
-              </div>
-              <div class="card-body">
-                <div id="detail_siswa"></div>
+                <div class="table display" id="riwayatTable">
+                  <thead>
+                    <!-- Di isi oleh script-riwayat.js -->
+                  </thead>
+                  <tbody>
+                    <!-- Di isi oleh script-riwayat.js -->
+                  </tbody>
+                </div>
               </div>
             </div>
           </div>
-          <!-- Show Profile is end -->
-
+          <!-- Bagian Menampilkan riwayat absens siswa is end -->
         </section>
       </div>
+
 
       <footer>
         <div class="footer clearfix mb-0 text-muted">
