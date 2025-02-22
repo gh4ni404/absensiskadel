@@ -1,5 +1,6 @@
 const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec';
 const user = localStorage.getItem('userUser');
+
 async function fetchDashData() {
   try {
     let response = await fetch(`${url}?action=getDashboardData`);
@@ -43,8 +44,6 @@ async function loadChartKelas(userGuru) {
   if (!data) return;
 
   const container = document.getElementById('container-charts');
-  const title_container = document.getElementById('names-charts');
-  const count_container = document.getElementById('count-charts');
 
   Object.keys(data).forEach(kelas => {
     const kelasData = data[kelas];
@@ -69,20 +68,20 @@ async function loadChartKelas(userGuru) {
     });
 
     chartDiv.innerHTML = `
-                      <div class="col-10">
-                        <div class="d-flex align-items-center">
-                          <svg class="bi text-primary" width="32" height="32" fill="blue" style="width: 10px;">
-                            <use xlink:href="/assets/static/images/bootstrap-icons.svg#circle-fill"/>
-                          </svg>
-                          <h6 class="mb-0 ms-3">${kelas}</h6>
-                        </div>
-                      </div>
-                      <div class="col-2">
-                        <h6 class="mb-0 text-end">${totalData}</h6>
-                      </div>
-                      <div class="col-12">
-                        <div id="chart-${kelas}"></div>
-                      </div>
+      <div class="col-10">
+        <div class="d-flex align-items-center">
+          <svg class="bi text-primary" width="32" height="32" fill="blue" style="width: 10px;">
+            <use xlink:href="/assets/static/images/bootstrap-icons.svg#circle-fill"/>
+          </svg>
+          <h6 class="mb-0 ms-3">${kelas}</h6>
+        </div>
+      </div>
+      <div class="col-2">
+        <h6 class="mb-0 text-end">${totalData}</h6>
+      </div>
+      <div class="col-12">
+        <div id="chart-${kelas}"></div>
+      </div>
     `;
     container.appendChild(chartDiv);
     const options = {
@@ -115,6 +114,51 @@ async function loadChartKelas(userGuru) {
   });
 }
 
+async function loadRiwayatCards() {
+  try {
+    const response = await fetch(`${url}?action=getRiwayat&user_guru=${user}`);
+    const {absen} = await response.json();
+    const sortedAbsen = absen.sort((a,b) => b.id - a.id);
+
+    const latestAbsen = sortedAbsen.slice(0,3);
+    const riwayatContainer = document.getElementById("riwayat_absensi");
+    riwayatContainer.innerHTML = "";
+
+    latestAbsen.forEach((absenItem) => {
+      riwayatContainer.innerHTML += `
+        <div class="recent-message d-flex px-4 py-3">
+          <div class="avatar avatar-lg">
+            ${absenItem.id}
+          </div>
+          <div class="name ms-4">
+            <h6 class="mb-1">${absenItem.id_siswa} ${absenItem.id_kelas}</h6>
+            <small class="text-muted mb-0">${absenItem.hari}, ${formateDate(absenItem.tanggal)} - ${absenItem.status}</small>
+          </div>
+        </div>
+      `;
+    });
+
+    riwayatContainer.innerHTML += `
+    <div class="px-4">
+      <a href="/pages/guru/riwayat-absen.html" class="btn btn-block btn-xl btn-outline-primary font-bold mt-3">Klik untuk lainnya</a>
+    </div>
+    `;
+    console.log(absen);
+  } catch (error) {
+    console.error("Gagal Memuat Card Riwayat: ", error);
+  }
+}
+
+function formateDate(dateRaw) {
+  const date = new Date(dateRaw);
+  return new Intl.DateTimeFormat('id-ID', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  }).format(date);
+}
+
 fetchDashData();
 loadChart();
 loadChartKelas(user);
+loadRiwayatCards();
