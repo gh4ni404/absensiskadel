@@ -1,6 +1,7 @@
 const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec';
 let tableSiswa;
 
+
 async function loadStudent() {
   try {
     const response = await fetch(url + '?action=getSiswa');

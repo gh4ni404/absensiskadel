@@ -2,14 +2,10 @@ const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugG
 let tableAbsen;
 const userRole = localStorage.getItem('userRole');
 
-// if(userRole === 'guru') {
-//   document.getElementById
-// }
-
 async function loadAbsen() {
   try {
     const response = await fetch(url + '?action=getAbsen');
-    const {header, absen} = await response.json();
+    const { header, absen } = await response.json();
 
     if ($.fn.DataTable.isDataTable('#absenTable')) {
       tableAbsen.destroy();
@@ -27,8 +23,9 @@ async function loadAbsen() {
       <tr>
         <td>${absen.id}</td>
         <td>${absen.id_siswa}</td>
-        <td>${absen.mapel}</td>
-        <td>${absen.user_guru}</td>
+        <td>${absen.id_kelas}</td>
+        <td>${absen.id_mapel}</td>
+        <td>${absen.id_guru}</td>
         <td>${absen.hari}</td>
         <td>${absen.tanggal}</td>
         <td>${absen.status}</td>
@@ -51,36 +48,49 @@ async function loadAbsen() {
 
 async function enableEditMode(row) {
   try {
-    const [resKelas, resGender] = await Promise.all([
+    const [resKelas, resMapel, resGuru] = await Promise.all([
       fetch(url + '?action=getKelas'),
-      fetch(url + '?action=getGender')
+      fetch(url + '?action=getMapel'),
+      fetch(url + '?action=getGuruByName'),
     ]);
     const kelas = await resKelas.json();
-    const gender = await resGender.json();
+    const mapel = await resMapel.json();
+    const guru = await resGuru.json();
     console.log(kelas);
-    console.log(gender);
+    console.log(mapel);
+    console.log(guru);
+
     const cells = row.cells;
     const namaSiswaCell = cells[1];
     const namaSiswaValue = namaSiswaCell.innerText;
     namaSiswaCell.innerHTML = `<input type="text" value="${namaSiswaValue}" class="form-control">`;
 
-    const genderCell = cells[2];
-    const genderValue = genderCell.innerText;
-    genderCell.innerHTML = `
-  <select class="form-control">
-    ${gender.map(option => `
-      <option value="${option.jenis_kelamin}" ${option.jenis_kelamin === genderValue ? 'selected' : ''}>${option.jenis_kelamin}</option>
-      `).join('')}
-  </select>
-  `;
-
-
-    const kelasCell = cells[3];
+    const kelasCell = cells[2];
     const kelasValue = kelasCell.innerText;
     kelasCell.innerHTML = `
   <select class="form-control">
     ${kelas.map(option => `
       <option value="${option.nama_kelas}" ${option.nama_kelas === kelasValue ? 'selected' : ''}>${option.nama_kelas}</option>
+      `).join('')}
+  </select>
+  `;
+
+    const mapelCell = cells[3];
+    const mapelValue = mapelCell.innerText;
+    mapelCell.innerHTML = `
+  <select class="form-control">
+    ${mapel.map(option => `
+      <option value="${option.nama_mapel}" ${option.nama_mapel === mapelValue ? 'selected' : ''}>${option.nama_mapel}</option>
+      `).join('')}
+  </select>
+  `;
+
+    const guruCell = cells[4];
+    const guruValue = guruCell.innerText;
+    guruCell.innerHTML = `
+  <select class="form-control">
+    ${guru.map(option => `
+      <option value="${option.user_guru}" ${option.user_guru === guruValue ? 'selected' : ''}>${option.user_guru}</option>
       `).join('')}
   </select>
   `;
