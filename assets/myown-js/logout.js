@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
 function logout() {
   localStorage.removeItem('isLoggedIn');
   localStorage.removeItem('userRole');
-  alert('Anda telah logout')
-  window.location.href = "/authen/login.html";
+  // alert('Anda telah logout')
+  Swal.fire({
+    icon: "success",
+    title: "Success",
+    text: "Anda telah logout",
+    timer: 2000,
+    showConfirmButton: false
+  }).then(() => {
+    window.location.href = "/authen/login.html";
+  });
 }

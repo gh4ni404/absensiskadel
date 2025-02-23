@@ -2,6 +2,18 @@
 const authForm = document.getElementById("authForm");
 const submitBtn = authForm.querySelector("button[type='submit']");
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const userRole = localStorage.getItem('userRole');
@@ -75,10 +87,12 @@ async function login(event) {
 
 
     } else {
-      alert(result.message || 'Username atau password salah.');
+      // alert(result.message || 'Username atau password salah.');
+      Toast.fire({
+        icon: "error",
+        title: "Username atau password anda salah. Silahkan coba lagi!"
+      });
     }
-
-    console.log(result); // Lihat respons di console browser
   } catch (error) {
     console.error('Error:', error);
   } finally {
