@@ -140,7 +140,7 @@ async function loadRiwayatCards() {
 
     riwayatContainer.innerHTML += `
     <div class="px-4">
-      <a href="/pages/guru/riwayat-absen.html" class="btn btn-block btn-xl btn-outline-primary font-bold mt-3">Klik untuk lainnya</a>
+      <a href="/pages/guru/riwayat-absen.html" class="btn btn-block btn-xl btn-outline-primary font-bold mt-3 shadow">Klik untuk lainnya</a>
     </div>
     `;
     console.log(absen);
