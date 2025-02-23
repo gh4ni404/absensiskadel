@@ -80,7 +80,7 @@ async function login(event) {
       }).then(() => {
         if (result.role === 'admin') {
           window.location.href = '/pages/admin/index.html'; // Redirect ke halaman admin
-        } else if (result.role === 'guru') {
+        } else if (result.role === 'guru' || result.role === 'wali_kelas') {
           window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
         }
       });

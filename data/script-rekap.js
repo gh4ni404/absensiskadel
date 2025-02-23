@@ -5,6 +5,7 @@ async function fetchDashData() {
   try {
     let response = await fetch(`${url}?action=getDashboardData`);
     let data = await response.json();
+    console.log(data);
     document.getElementById("jumlah_siswa").innerText = data.jumlah_siswa;
     document.getElementById("jumlah_guru").innerText = data.jumlah_guru;
     document.getElementById("rekapHadir").innerText = `Hadir: ${data.rekap_bulan_ini.hadir}`;

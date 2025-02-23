@@ -15,6 +15,7 @@ $(document).ready(function () {
         { data: 'role' },
         { data: 'mapel' },
         { data: 'kelas' },
+        { data: 'kode_wali'},
         {
           data: null,
           render: function (data) {
