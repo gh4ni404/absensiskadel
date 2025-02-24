@@ -1,4 +1,3 @@
-
 const authForm = document.getElementById("authForm");
 const submitBtn = authForm.querySelector("button[type='submit']");
 
@@ -59,6 +58,9 @@ async function login(event) {
       body: JSON.stringify({ action: 'login', username, password })
     });
     const result = await response.json();
+    console.log(result.kelas);
+    console.log(result.role);
+    console.log("hasil dari loggers login: ",result.loggers);
 
     if (result.success) {
       // alert('Login berhasil! Selamat Datang ' + result.role);
@@ -84,8 +86,6 @@ async function login(event) {
           window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
         }
       });
-
-
     } else {
       // alert(result.message || 'Username atau password salah.');
       Toast.fire({

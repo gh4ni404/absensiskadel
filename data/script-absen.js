@@ -1,9 +1,10 @@
 const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec';
-const userRole = localStorage.getItem('userRole');
+// const userRole = localStorage.getItem('userRole');
 const user = localStorage.getItem('userUser');
 const absenForm = document.getElementById("absenForm");
 const submitBtn = absenForm.querySelector("button[type='submit']");
 const inputs = absenForm.querySelectorAll("input, select");
+
 let emptyField = null;
 for (let input of inputs) {
   if (input.value.trim() === "") {

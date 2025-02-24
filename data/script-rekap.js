@@ -5,7 +5,6 @@ async function fetchDashData() {
   try {
     let response = await fetch(`${url}?action=getDashboardData`);
     let data = await response.json();
-    console.log(data);
     document.getElementById("jumlah_siswa").innerText = data.jumlah_siswa;
     document.getElementById("jumlah_guru").innerText = data.jumlah_guru;
     document.getElementById("rekapHadir").innerText = `Hadir: ${data.rekap_bulan_ini.hadir}`;
@@ -144,7 +143,6 @@ async function loadRiwayatCards() {
       <a href="/pages/guru/riwayat-absen.html" class="btn btn-block btn-xl btn-outline-primary font-bold mt-3 shadow">Klik untuk lainnya</a>
     </div>
     `;
-    console.log(absen);
   } catch (error) {
     console.error("Gagal Memuat Card Riwayat: ", error);
   }
