@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
   const kelasWali = localStorage.getItem('kelasWali') || "Tidak diketahui";
   const userRole = localStorage.getItem('userRole');
   const menu_rekap = document.getElementById('menu-rekap');
@@ -11,4 +10,3 @@ document.addEventListener('DOMContentLoaded', function() {
       menu_rekap.style.display = 'block';
     }
   }
-}); 
