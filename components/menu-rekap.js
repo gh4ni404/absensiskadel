@@ -2,14 +2,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const kelasWali = localStorage.getItem('kelasWali') || "Tidak diketahui";
   const userRole = localStorage.getItem('userRole');
   const menu_rekap = document.getElementById('menu-rekap');
+  menu_rekap.innerHTML = "";
 
   if (menu_rekap) {
-    // if (userRole === 'guru') {
-    //   menu_rekap.style.display = 'none';
-    // } else 
     if (userRole === 'wali_kelas') {
-      menu_rekap.style.display = 'block';
-      document.getElementById('menu-title').innerText = `Rekap Absen Siswa - ${kelasWali}`;
-    } 
+      setTimeout(() => {
+        menu_rekap.innerHTML = `
+        <a href="#" class="sidebar-link">
+          <i class="fas fa-fw fa-calendar-alt"></i>
+          <span id="menu-title">Rekap Absen Siswa - ${kelasWali}</span>
+        </a>
+        `;
+      }, 0);
+    }
   }
 });
