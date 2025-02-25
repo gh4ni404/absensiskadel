@@ -12,31 +12,32 @@ async function fetchDashData() {
     document.getElementById("rekapSakit").innerText = `Sakit: ${data.rekap_bulan_ini.sakit}`;
     document.getElementById("rekapAlpa").innerText = `Alpa: ${data.rekap_bulan_ini.alpa}`;
     document.getElementById("rekapPersen").innerText = `${data.rekap_persen}%`;
+
+    const options = {
+      series: [
+        { name: "Hadir", data: data.rekap_tahunan.hadir.slice(1) },
+        { name: "Sakit", data: data.rekap_tahunan.sakit.slice(1) },
+        { name: "Izin", data: data.rekap_tahunan.izin.slice(1) },
+        { name: "Alpa", data: data.rekap_tahunan.alpa.slice(1) },
+      ],
+      chart: { type: "bar", height: 250, toolbar: { show: false } },
+      dataLabels: { enabled: false },
+      xaxis: {
+        categories: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
+      },
+    };
+    const chart = new ApexCharts(document.querySelector("#chart-profile-visit"), options);
+    chart.render();
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan fetch:", error)
   }
 }
 
-async function loadChart() {
-  let response = await fetch(`${url}?action=getDashboardData`);
-  let data = await response.json();
-  const options = {
-    annotations: { position: "back" },
-    series: [
-      { name: "Hadir", data: data.rekap_tahunan.hadir.slice(1) },
-      { name: "Sakit", data: data.rekap_tahunan.sakit.slice(1) },
-      { name: "Izin", data: data.rekap_tahunan.izin.slice(1) },
-      { name: "Alpa", data: data.rekap_tahunan.alpa.slice(1) },
-    ],
-    chart: { type: "bar", height: 250, toolbar: { show: false } },
-    dataLabels: { enabled: false },
-    xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"],
-    },
-  };
-  const chart = new ApexCharts(document.querySelector("#chart-profile-visit"), options);
-  chart.render();
-}
+// async function loadChart() {
+//   let response = await fetch(`${url}?action=getDashboardData`);
+//   let data = await response.json();
+
+// }
 
 async function loadChartKelas(userGuru) {
   const response = await fetch(`${url}?action=getRekapByGuru&user_guru=${userGuru}`);
@@ -50,7 +51,7 @@ async function loadChartKelas(userGuru) {
     let totalData = 0;
     const chartDiv = document.createElement("div");
     chartDiv.className = "row";
-    
+
     const categories = Object.keys(kelasData);
     const seriesData = {
       hadir: [],
@@ -114,13 +115,13 @@ async function loadChartKelas(userGuru) {
   });
 }
 
-async function loadRiwayatCards() {
+async function loadRiwayatCards(userGuru) {
   try {
-    const response = await fetch(`${url}?action=getRiwayat&user_guru=${user}`);
-    const {absen} = await response.json();
-    const sortedAbsen = absen.sort((a,b) => b.id - a.id);
+    const response = await fetch(`${url}?action=getRiwayat&user_guru=${userGuru}`);
+    const { absen } = await response.json();
+    const sortedAbsen = absen.sort((a, b) => b.id - a.id);
 
-    const latestAbsen = sortedAbsen.slice(0,3);
+    const latestAbsen = sortedAbsen.slice(0, 3);
     const riwayatContainer = document.getElementById("riwayat_absensi");
     riwayatContainer.innerHTML = "";
 
@@ -157,7 +158,8 @@ function formateDate(dateRaw) {
   }).format(date);
 }
 
-fetchDashData();
-loadChart();
-loadChartKelas(user);
-loadRiwayatCards();
+document.addEventListener("DOMContentLoaded", async function () {
+  await fetchDashData();
+  loadChartKelas(user);
+  loadRiwayatCards(user);
+});

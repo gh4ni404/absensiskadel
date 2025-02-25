@@ -77,3 +77,11 @@
     font-size: small;
   }
 }
+
+.hidden {
+  display: none !important;
+}
+
+[data-role="wali_kelas"].show {
+  display: block !important;
+}

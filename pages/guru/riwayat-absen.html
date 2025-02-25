@@ -18,6 +18,8 @@
 </head>
 
 <body>
+  <script src="/components/menu-rekap.js"></script>
+  <script src="/assets/static/js/initTheme.js"></script>
 
   <div id="app">
     <!-- Part of Sidebar is here -->
@@ -93,7 +95,7 @@
             <!-- Part of Dashboard is end -->
 
             <!-- Part of Rekap absensi siswa is here -->
-            <li class="sidebar-item" id="menu-rekap">
+            <li class="sidebar-item" id="menu-rekap" style="display: none;">
               <a href="#" class="sidebar-link">
                 <i class="fas fa-fw fa-calendar-alt"></i>
                 <span id="menu-title">Rekap Absensi Siswa</span>
@@ -103,7 +105,7 @@
 
             <!-- Part of Absensi siswa is here -->
             <li class="sidebar-item">
-              <a href="/pages/guru/absen-management.html" class='sidebar-link'>
+              <a href="/pages/guru/absen-management.html" class="sidebar-link">
                 <i class="bi bi-card-checklist"></i>
                 <span>Absensi Siswa</span>
               </a>
