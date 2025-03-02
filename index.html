@@ -14,11 +14,13 @@
 </head>
 
 <body id="page-top">
+  <script src="components/is-login-check.js"></script>
   <nav class="navbar navbar-expand-lg navbar-dark foi-navbar fixed-top" id="mainNav">
     <div class="container">
       <a href="#page-top" class="navbar-brand"><img src="/assets/images/ABSENSI - SKADEL.svg" alt="logo"></a>
-      <button class="navbar-toggler" style="color: black;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" style="color: black;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
         <i class="fas fa-bars ms-1"></i>
         MENU
       </button>
@@ -44,8 +46,9 @@
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0">
           <li class="nav-item mr-2 mb-3 mb-lg-0">
-            <a href="/authen/login.html" class="btn btn-secondary p-2"><i class="fas fa-sign-in-alt"></i>
-              <span>Login</span></a>
+            <a id="login-button" href="/authen/login.html" class="btn btn-secondary p-2"><i class="fas fa-sign-in-alt"></i>
+              <span id="login-text">Login</span>
+            </a>
           </li>
         </ul>
       </div>

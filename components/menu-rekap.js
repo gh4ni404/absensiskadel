@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const kelasWali = localStorage.getItem('kelasWali') || "Tidak diketahui";
   const userRole = localStorage.getItem('userRole');
 
-  nama_guru.textContent = nameUser;
-  user_guru.textContent = "Username : " + userUsers;
-  role_user.textContent = "Level : " + userRole;
+  if(nama_guru) nama_guru.textContent = nameUser;
+  if(user_guru) user_guru.textContent = "Username : " + userUsers;
+  if(role_user) role_user.textContent = "Level : " + userRole;
 
   const menu_rekap = document.getElementById('menu-rekap');
   menu_rekap.innerHTML = "";
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <span id="menu-title">Rekap Absen Siswa - ${kelasWali}</span>
         </a>
         `;
-      }, 0);
+      }, 1);
     }
   }
 });

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (userRole === 'admin') {
       window.location.href = '/pages/admin/index.html';
     }
-    if (userRole === 'guru') {
+    if (userRole === 'guru' || userRole === 'wali_kelas') {
       window.location.href = '/pages/guru/index.html'; // Redirect ke halaman guru
     }
   }
