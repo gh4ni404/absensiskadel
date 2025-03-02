@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const nama_guru = document.getElementById('namaGuru');
+  const user_guru = document.getElementById('userGuru');
+  const role_user = document.getElementById('roleUser');
+
+  // const userRole = localStorage.getItem('userRole');
+  const nameUser = localStorage.getItem('nameUser');
+  const userUsers = localStorage.getItem('userUser');
+  
   const kelasWali = localStorage.getItem('kelasWali') || "Tidak diketahui";
   const userRole = localStorage.getItem('userRole');
+
+  nama_guru.textContent = nameUser;
+  user_guru.textContent = "Username : " + userUsers;
+  role_user.textContent = "Level : " + userRole;
+
   const menu_rekap = document.getElementById('menu-rekap');
   menu_rekap.innerHTML = "";
 

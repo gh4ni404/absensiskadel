@@ -33,12 +33,6 @@ async function fetchDashData() {
   }
 }
 
-// async function loadChart() {
-//   let response = await fetch(`${url}?action=getDashboardData`);
-//   let data = await response.json();
-
-// }
-
 async function loadChartKelas(userGuru) {
   const response = await fetch(`${url}?action=getRekapByGuru&user_guru=${userGuru}`);
   const data = await response.json();
