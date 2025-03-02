@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (userRole === 'wali_kelas') {
       setTimeout(() => {
         menu_rekap.innerHTML = `
-        <a href="#" class="sidebar-link">
+        <a href="/pages/guru/rekap-absen.html" class="sidebar-link">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span id="menu-title">Rekap Absen Siswa - ${kelasWali}</span>
         </a>

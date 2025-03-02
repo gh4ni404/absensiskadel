@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // document.getElementById('menu-title').innerText = `Rekap Absen Siswa - ${kelasWali}`;
       setTimeout(() => {
         menu_rekap.innerHTML = `
-        <a href="#" class="sidebar-link">
+        <a href="/pages/guru/rekap-absen.html" class="sidebar-link">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span id="menu-title">Rekap Absen Siswa - ${kelasWali}</span>
         </a>
