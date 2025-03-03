@@ -1,20 +1,66 @@
+let data_rekap = {}
+let dropdownMapel = document.getElementById("mapel");
+
 document.addEventListener("DOMContentLoaded", async function () {
   const kelas_wali = localStorage.getItem("kelasWali");
   const url = 'https://script.google.com/macros/s/AKfycbwwr-VYZQKHK8oWFOGydcbegugGoYXQIaDgnxyAmgF_CMk2hbEM7S7Q-xofCPM-ryJ7/exec';
 
+  dropdownMapel.disabled = true;
+
   try {
     const response = await fetch(`${url}?action=getRekapByKelas&wali_kelas=${kelas_wali}`);
-    const data_rekap = await response.json();
-    console.log(data_rekap)
+    data_rekap = await response.json();
 
+    isiMapel(data_rekap);
     renderCarousel(data_rekap);
 
   } catch (error) {
     console.error("Gagal Memuat Data Rekap by Kelas ", error);
+  } finally {
+    dropdownMapel.disabled = false;
   }
 });
 
+dropdownMapel.addEventListener("change", function () {
+  const selectMapel = this.value;
+  
+  this.disabled = true;
+  setTimeout(() => {
+    if (selectMapel === "all") {
+      renderCarousel(data_rekap);
+    } else {
+      let filterChange = {};
+      Object.keys(data_rekap).forEach(tanggal => {
+        let dataFilter = data_rekap[tanggal].filter(absensi => absensi.mapel === selectMapel);
+        if (dataFilter.length > 0) {
+          filterChange[tanggal] = dataFilter;
+        }
+      });
 
+      renderCarousel(filterChange);
+    }
+    this.disabled = false;
+  }, 500);
+
+
+});
+
+function isiMapel(data) {
+  let mapelSet = new Set();
+
+  Object.keys(data).forEach(tanggal => {
+    data[tanggal].forEach(absensi => {
+      mapelSet.add(absensi.mapel);
+    });
+  });
+
+  mapelSet.forEach(mapel => {
+    let option = document.createElement("option");
+    option.value = mapel;
+    option.textContent = mapel;
+    dropdownMapel.appendChild(option);
+  });
+}
 
 function renderCarousel(data) {
   const rekap = document.getElementById("rekap-container");
@@ -41,9 +87,8 @@ function renderCarousel(data) {
 
     dataBulan[bulanKey].hariUnik.add(dateUnik);
 
-    
-
     data[tanggal].forEach(absensi => {
+
       const siswaKey = absensi.nama_siswa;
       if (!dataBulan[bulanKey].siswa[siswaKey]) {
         dataBulan[bulanKey].siswa[siswaKey] = {
@@ -84,9 +129,9 @@ function renderCarousel(data) {
       <tr>
         <td>${siswa.nama}</td>
         ${dateArray.map(tgl => {
-          let statusAbsen = siswa.absensi[tgl];
-          return  `<td class="text-center status-${statusAbsen}">${statusAbsen}</td>`;
-        }).join("")}
+      let statusAbsen = siswa.absensi[tgl];
+      return `<td class="text-center status-${statusAbsen}">${statusAbsen}</td>`;
+    }).join("")}
         <td class="text-center">${siswa.total.H}</td>
         <td class="text-center">${siswa.total.S}</td>
         <td class="text-center">${siswa.total.I}</td>
@@ -117,7 +162,6 @@ function renderCarousel(data) {
     `;
 
     rekap.innerHTML += slideHTML;
-    console.log(dataBulan);
   });
 }
 
