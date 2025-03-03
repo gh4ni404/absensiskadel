@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rekapan Absensi - ABSENSISKADEL</title>
 
+  <link rel="stylesheet" href="/components/absen-indicators.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/app-dark.css">
   <link rel="stylesheet" crossorigin href="/assets/compiled/css/iconly.css">
@@ -176,6 +177,12 @@
           <!-- Bagian menampilkan carousel rekap absen siswa is here -->
           <div class="card">
             <div class="card-body">
+              <!-- Bagian Dropdown Mapel is here -->
+              <div class="form-group mb-2">
+                <label for="mapel" class="form-label">Mata Pelajaran : </label>
+                <select id="mapel" class="form-control"></select>
+              </div>
+              <!-- Bagian Dropdown Mapel is end -->
               <div class="carousel slide" id="carouselExampleControls" data-bs-ride="carousel">
                 <div class="carousel-inner" id="rekap-container">
                   <!-- Di isi oleh script-rekap.js -->
@@ -192,6 +199,8 @@
             </div>
           </div>
           <!-- Bagian menampilkan carousel rekap absen siswa is end -->
+
+
           <!-- Bagian Menampilkan rekap absen siswa is here -->
           <div class="card">
             <div class="card-body">

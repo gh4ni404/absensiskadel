@@ -29,6 +29,7 @@ function renderCarousel(data) {
         siswa: {}
       };
     }
+
     dataBulan[bulanKey].hariUnik.add(dateUnik);
 
     const statusMap = {
@@ -58,8 +59,6 @@ function renderCarousel(data) {
 
       dataBulan[bulanKey].siswa[siswaKey].total[statusKey] += 1;
     });
-
-
   });
 
   Object.keys(dataBulan).forEach((bulan, index) => {
@@ -68,7 +67,7 @@ function renderCarousel(data) {
 
     let headerHTML = `
       <tr>
-        <th class="text-center">Nama Siswa</th>
+        <th>Nama Siswa</th>
         ${dateArray.map(tgl => `<th class="text-center">${tgl}</th>`).join("")}
         <th class="text-center">Hadir</th>
         <th class="text-center">Sakit</th>
@@ -80,7 +79,10 @@ function renderCarousel(data) {
     let siswaHTML = Object.values(dataBulan[bulan].siswa).map(siswa => `
       <tr>
         <td>${siswa.nama}</td>
-        ${dateArray.map(tgl => `<td class="text-center">${siswa.absensi[tgl]}</td>`).join("")}
+        ${dateArray.map(tgl => {
+          let statusAbsen = siswa.absensi[tgl];
+          return  `<td class="text-center status-${statusAbsen}">${statusAbsen}</td>`;
+        }).join("")}
         <td class="text-center">${siswa.total.H}</td>
         <td class="text-center">${siswa.total.S}</td>
         <td class="text-center">${siswa.total.I}</td>
@@ -90,21 +92,28 @@ function renderCarousel(data) {
 
     let slideHTML = `
       <div class="carousel-item ${activeClass}">
-        <div class="card p-3">
-          <h5>${new Intl.DateTimeFormat('id', { month: 'long', year: 'numeric' }).format(new Date(bulan))}</h5>
-          <table class="table-responsive table-bordered">
-            <thead>
-              ${headerHTML}
-            </thead>
-            <tbody>
-              ${siswaHTML}
-            </tbody>
-          </table>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">${new Intl.DateTimeFormat('id', { month: 'long', year: 'numeric' }).format(new Date(bulan))}</h5>
+          </div>
+          <div class="card-content">
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  ${headerHTML}
+                </thead>
+                <tbody>
+                  ${siswaHTML}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     `;
 
     rekap.innerHTML += slideHTML;
+    console.log(dataBulan);
   });
 }
 
