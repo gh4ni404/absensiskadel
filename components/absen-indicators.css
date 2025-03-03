@@ -1,20 +1,31 @@
+table td[class^="status-"] {
+  font-weight: bold;
+}
+
 table td.status-H {
   background-color: #d4edda;
   color: #155724;
-  font-weight: bold;
 }
+
 table td.status-I {
   background-color: #fff3cd;
   color: #856404;
-  font-weight: bold;
 }
+
 table td.status-S {
-  background-color: #f8d7da;
-  color: #721c24;
-  font-weight: bold;
+  background-color: #cce5ff;
+  color: #004085;
 }
+
 table td.status-A {
   background-color: #f5c6cb;
   color: #721c24;
-  font-weight: bold;
+}
+
+table td:nth-last-child(-n+4),
+table td:first-child {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0px;
+  border-top: 0px;
+
 }

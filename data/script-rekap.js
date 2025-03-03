@@ -118,10 +118,10 @@ function renderCarousel(data) {
       <tr>
         <th>Nama Siswa</th>
         ${dateArray.map(tgl => `<th class="text-center">${tgl}</th>`).join("")}
-        <th class="text-center">Hadir</th>
-        <th class="text-center">Sakit</th>
-        <th class="text-center">Izin</th>
-        <th class="text-center">Alpa</th>
+        <th class="text-center status-H">Hadir</th>
+        <th class="text-center status-S">Sakit</th>
+        <th class="text-center status-I">Izin</th>
+        <th class="text-center status-A">Alpa</th>
       </tr>
     `;
 
@@ -132,10 +132,10 @@ function renderCarousel(data) {
       let statusAbsen = siswa.absensi[tgl];
       return `<td class="text-center status-${statusAbsen}">${statusAbsen}</td>`;
     }).join("")}
-        <td class="text-center">${siswa.total.H}</td>
-        <td class="text-center">${siswa.total.S}</td>
-        <td class="text-center">${siswa.total.I}</td>
-        <td class="text-center">${siswa.total.A}</td>
+        <td class="text-center status-H">${siswa.total.H}</td>
+        <td class="text-center status-S">${siswa.total.S}</td>
+        <td class="text-center status-I">${siswa.total.I}</td>
+        <td class="text-center status-A">${siswa.total.A}</td>
       </tr>
     `).join("");
 
