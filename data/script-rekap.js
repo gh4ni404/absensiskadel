@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     const response = await fetch(`${url}?action=getRekapByKelas&wali_kelas=${kelas_wali}`);
     const data_rekap = await response.json();
+    console.log(data_rekap)
 
     renderCarousel(data_rekap);
 
@@ -13,10 +14,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 
+
+
 function renderCarousel(data) {
   const rekap = document.getElementById("rekap-container");
   rekap.innerHTML = "";
   const dataBulan = {};
+  const statusMap = {
+    "Hadir": "H",
+    "Izin": "I",
+    "Sakit": "S",
+    "Alpa": "A"
+  };
 
   Object.keys(data).forEach(tanggal => {
     const [tahun, bulan, hari] = tanggal.split("-")
@@ -32,12 +41,7 @@ function renderCarousel(data) {
 
     dataBulan[bulanKey].hariUnik.add(dateUnik);
 
-    const statusMap = {
-      "Hadir": "H",
-      "Izin": "I",
-      "Sakit": "S",
-      "Alpa": "A"
-    };
+    
 
     data[tanggal].forEach(absensi => {
       const siswaKey = absensi.nama_siswa;

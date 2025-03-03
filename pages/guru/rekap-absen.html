@@ -180,7 +180,9 @@
               <!-- Bagian Dropdown Mapel is here -->
               <div class="form-group mb-2">
                 <label for="mapel" class="form-label">Mata Pelajaran : </label>
-                <select id="mapel" class="form-control"></select>
+                <select id="mapel" class="form-control" onchange="filterByMapel()">
+                  <option value="all">Semua Mata Pelajaran</option>
+                </select>
               </div>
               <!-- Bagian Dropdown Mapel is end -->
               <div class="carousel slide" id="carouselExampleControls" data-bs-ride="carousel">
