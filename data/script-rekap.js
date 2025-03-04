@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 dropdownMapel.addEventListener("change", function () {
   const selectMapel = this.value;
-  
   this.disabled = true;
+
   setTimeout(() => {
     if (selectMapel === "all") {
       renderCarousel(data_rekap);
@@ -36,13 +36,10 @@ dropdownMapel.addEventListener("change", function () {
           filterChange[tanggal] = dataFilter;
         }
       });
-
       renderCarousel(filterChange);
     }
     this.disabled = false;
   }, 500);
-
-
 });
 
 function isiMapel(data) {
@@ -84,11 +81,9 @@ function renderCarousel(data) {
         siswa: {}
       };
     }
-
     dataBulan[bulanKey].hariUnik.add(dateUnik);
 
     data[tanggal].forEach(absensi => {
-
       const siswaKey = absensi.nama_siswa;
       if (!dataBulan[bulanKey].siswa[siswaKey]) {
         dataBulan[bulanKey].siswa[siswaKey] = {
@@ -103,9 +98,7 @@ function renderCarousel(data) {
         };
       }
       const statusKey = statusMap[absensi.status];
-
       dataBulan[bulanKey].siswa[siswaKey].absensi[dateUnik] = statusKey;
-
       dataBulan[bulanKey].siswa[siswaKey].total[statusKey] += 1;
     });
   });
@@ -130,7 +123,7 @@ function renderCarousel(data) {
         <td>${siswa.nama}</td>
         ${dateArray.map(tgl => {
       let statusAbsen = siswa.absensi[tgl];
-      return `<td class="text-center status-${statusAbsen}">${statusAbsen}</td>`;
+      return `<td class="text-center status-${statusAbsen}">${statusAbsen || "-"}</td>`;
     }).join("")}
         <td class="text-center status-H">${siswa.total.H}</td>
         <td class="text-center status-S">${siswa.total.S}</td>
