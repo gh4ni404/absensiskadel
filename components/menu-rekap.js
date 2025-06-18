@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const menu_rekap = document.getElementById('menu-rekap');
   menu_rekap.innerHTML = "";
+  console.log(menu_rekap);
+  console.log(userRole);
+  console.log(kelasWali);
 
   if (menu_rekap) {
-    if (userRole === 'wali_kelas') {
+    if (userRole === 'guru') {
       setTimeout(() => {
         menu_rekap.innerHTML = `
         <a href="/pages/guru/rekap-absen.html" class="sidebar-link">
@@ -29,4 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 1);
     }
   }
+  // if (menu_rekap) {
+  //   if (userRole === 'wali_kelas') {
+  //     setTimeout(() => {
+  //       menu_rekap.innerHTML = `
+  //       <a href="/pages/guru/rekap-absen.html" class="sidebar-link">
+  //         <i class="fas fa-fw fa-calendar-alt"></i>
+  //         <span id="menu-title">Rekap Absen Siswa - ${kelasWali}</span>
+  //       </a>
+  //       `;
+  //     }, 1);
+  //   }
+  // }
 });
