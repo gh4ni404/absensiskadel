@@ -119,21 +119,21 @@ function fetchData(day) {
                 data: "12",
                 render: renderDoc
               },
-              {
-                title: "DOKUMENTASI 2",
-                data: "13",
-                render: renderDoc
-              },
-              {
-                title: "DOKUMENTASI 3",
-                data: "14",
-                render: renderDoc
-              },
-              {
-                title: "DOKUMENTASI 4",
-                data: "15",
-                render: renderDoc
-              },
+              // {
+              //   title: "DOKUMENTASI 2",
+              //   data: "13",
+              //   render: renderDoc
+              // },
+              // {
+              //   title: "DOKUMENTASI 3",
+              //   data: "14",
+              //   render: renderDoc
+              // },
+              // {
+              //   title: "DOKUMENTASI 4",
+              //   data: "15",
+              //   render: renderDoc
+              // },
               {
                 title: "PIKET PENGGANTI",
                 data: "16",
